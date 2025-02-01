@@ -126,7 +126,7 @@ do
     table.insert(juicedMessage, L["Stack trace:"])
     table.insert(juicedMessage, errorMessage)
     local err = table.concat(juicedMessage, "\n")
-    if data and data.rg_custom_error_handler and GREMINDER and GREMINDER.OnError then
+    if data and data.mt_custom_error_handler and GREMINDER and GREMINDER.OnError then
       GREMINDER:OnError(err,debugstack(2),currentErrorHandlerContext)
     end
     geterrorhandler()(err)
