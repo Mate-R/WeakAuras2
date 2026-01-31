@@ -1,4 +1,4 @@
-name: Create WeakAurasModelPaths Update Pull Request
+name: Create MateAurasModelPaths Update Pull Request
 
 on:
   schedule:
@@ -7,23 +7,23 @@ on:
 
 jobs:
   modelPathsUpdate:
-    if: github.repository == 'WeakAuras/WeakAuras2'
+    if: github.repository == 'Mate-R/MateAuras'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: leafo/gh-actions-lua@v12
 
-      - name: Update WeakAurasModelPaths from wago.tools
+      - name: Update MateAurasModelPaths from wago.tools
         run: |
           cd .github/scripts/
           ./update-model-paths.sh
         shell: bash
 
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v8
+        uses: peter-evans/create-pull-request@v6
         with:
           branch: update-modelpaths
-          commit-message: Update WeakAurasModelPaths from wago.tools
-          title: Update WeakAurasModelPaths from wago.tools
-          body: Update WeakAurasModelPaths from wago.tools
+          commit-message: Update MateAurasModelPaths from wago.tools
+          title: Update MateAurasModelPaths from wago.tools
+          body: Update MateAurasModelPaths from wago.tools
           delete-branch: true

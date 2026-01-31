@@ -1,0 +1,11 @@
+<Bindings>
+  <Binding name="MateAurasTOGGLE" Category="BINDING_HEADER_MateAuras">
+    MateAuras.OpenOptions()
+  </Binding>
+  <Binding name="MateAurasPROFILINGTOGGLE" Category="BINDING_HEADER_MateAuras">
+    MateAurasProfilingFrame:Toggle()
+  </Binding>
+  <Binding name="MateAurasPRINTPROFILING" Category="BINDING_HEADER_MateAuras">
+    MateAuras.PrintProfile()
+  </Binding>
+</Bindings>

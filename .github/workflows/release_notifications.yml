@@ -48,7 +48,7 @@ jobs:
     needs: release-notification-output
 
     env:
-      MESSAGE: "New WeakAuras Release"
+      MESSAGE: "New MateAuras Release"
 
     steps:
       - name: Send Discord Notification
@@ -58,7 +58,7 @@ jobs:
         with:
           webhook-url: ${{ secrets.RELEASE_WEBHOOK_URL }}
           embed-title: ${{ env.MESSAGE }}
-          embed-url: https://github.com/WeakAuras/WeakAuras2/releases/latest
+          embed-url: https://github.com/Mate-R/MateAuras/releases/latest
           embed-description:  ${{needs.release-notification-output.outputs.changeLogText}}
 
   twitter-release-notification:
@@ -83,7 +83,7 @@ jobs:
     steps:
       - name: Send Mastodon Notification
         id: mastodon
-        uses: cbrgm/mastodon-github-action@v2.1.22
+        uses: cbrgm/mastodon-github-action@v2.1.19
         with:
           access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}
           url: ${{ secrets.MASTODON_URL }}

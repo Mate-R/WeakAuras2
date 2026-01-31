@@ -1,0 +1,18 @@
+## Interface: 110205, 120000
+## Title: MateAuras Model Paths (MT fork)
+## Author: Mate-R
+## Version: @project-version@
+## IconTexture: Interface\AddOns\MateAuras\Media\Textures\icon.blp
+## Notes: Model paths for MateAuras
+## Notes-esES: Las rutas de modelos para MateAuras
+## Notes-esMX: Las rutas de modelos para MateAuras
+## Notes-deDE: 3D-Model Pfade für MateAuras
+## Notes-ruRU: Ссылки на файлы моделей MateAuras
+## Notes-zhTW: MateAuras的模組路徑
+## X-Category: Interface Enhancements
+## Globe-Main: MateAuras
+## DefaultState: Enabled
+## LoadOnDemand: 1
+## Dependencies: MateAuras, MateAurasOptions
+
+ModelPaths.lua

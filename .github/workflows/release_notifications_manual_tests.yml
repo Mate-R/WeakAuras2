@@ -72,7 +72,7 @@ jobs:
         with:
           webhook-url: ${{ secrets.RELEASE_WEBHOOK_URL }}
           embed-title: ${{ env.MESSAGE }}
-          embed-url: https://github.com/WeakAuras/WeakAuras2/releases/latest
+          embed-url: https://github.com/Mate-R/MateAuras/releases/latest
           embed-description:  ${{needs.test-release-notification-output.outputs.changeLogText}}
 
 ############### TWITTER ####################
@@ -102,7 +102,7 @@ jobs:
     steps:
       - name: Mastodon Notification
         id: mastodon
-        uses: cbrgm/mastodon-github-action@v2.1.22
+        uses: cbrgm/mastodon-github-action@v2.1.19
         with:
           access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }} # access token
           url: ${{ secrets.MASTODON_URL }} # https://example.social

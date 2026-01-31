@@ -1,0 +1,8 @@
+## Interface: 110205, 120000
+## Title: MateAuras Archive
+## Author: Mate-R
+## Version: @project-version@
+## IconTexture: Interface\AddOns\MateAuras\Media\Textures\icon.blp
+## LoadOnDemand: 1
+## SavedVariables: MateAurasArchive
+## Dependencies: MateAuras

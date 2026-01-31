@@ -16,15 +16,15 @@ local function generateFileList(dir)
 end
 
 local fileList = {
-    WeakAuras_Main = generateFileList("WeakAuras"),
-    WeakAuras_Options = generateFileList("WeakAurasOptions"),
-    WeakAuras_Templates = generateFileList("WeakAurasTemplates"),
+    MateAuras_Main = generateFileList("MateAuras"),
+    MateAuras_Options = generateFileList("MateAurasOptions"),
+    MateAuras_Templates = generateFileList("MateAurasTemplates"),
 }
 
 local ordered = {
-    "WeakAuras_Main",
-    "WeakAuras_Options",
-    "WeakAuras_Templates",
+    "MateAuras_Main",
+    "MateAuras_Options",
+    "MateAuras_Templates",
 }
 
 local overrides = {
@@ -46,7 +46,7 @@ Choose which events cause the custom trigger to be checked. Multiple events can 
 • "CLEU" can be used instead of COMBAT_LOG_EVENT_UNFILTERED and colons can be used to separate specific "subEvents" you want to receive.
 • The keyword "TRIGGER" can be used, with colons separating trigger numbers, to have the custom trigger get updated when the specified trigger(s) update.
 
-Since this is a status-type trigger, the specified events may be called by WeakAuras without the expected arguments.
+Since this is a status-type trigger, the specified events may be called by MateAuras without the expected arguments.
 
 |cFF4444FFFor example:|r
 UNIT_POWER_UPDATE:player, UNIT_AURA:nameplate:group PLAYER_TARGET_CHANGED CLEU:SPELL_CAST_SUCCESS TRIGGER:3:1

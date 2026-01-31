@@ -1,0 +1,115 @@
+## Interface: 120000, 120001
+## Title: MateAuras Options
+## Author: Mate-R
+## Version: @project-version@
+## IconTexture: Interface\AddOns\MateAuras\Media\Textures\icon.blp
+## Notes: Options for MateAuras
+## Notes-esES: Opciones para MateAuras
+## Notes-esMX: Opciones para MateAuras
+## Notes-deDE: Optionen für MateAuras
+## Notes-ruRU: Опции MateAuras
+## Notes-zhTW: MateAuras的設定
+## X-Category: Interface Enhancements
+## Globe-Main: MateAuras
+## DefaultState: Enabled
+## LoadOnDemand: 1
+## Dependencies: MateAuras
+## SavedVariables: MateAurasOptionsSaved
+
+embeds.xml
+locales.xml
+
+VersionCheck.lua
+ForAllIndentsAndPurposes.lua
+
+RegionOptions\Empty.lua
+RegionOptions\AuraBar.lua
+RegionOptions\Texture.lua
+RegionOptions\Icon.lua
+RegionOptions\Text.lua
+RegionOptions\Group.lua
+RegionOptions\DynamicGroup.lua
+RegionOptions\StopMotion.lua
+RegionOptions\Model.lua
+RegionOptions\ProgressTexture.lua
+
+SubRegionOptions\SubRegionCommon.lua
+SubRegionOptions\Background.lua
+SubRegionOptions\SubText.lua
+SubRegionOptions\Border.lua
+SubRegionOptions\Glow.lua
+SubRegionOptions\Tick.lua
+SubRegionOptions\Model.lua
+SubRegionOptions\StopMotion.lua
+SubRegionOptions\Texture.lua
+SubRegionOptions\CircularProgressTexture.lua
+SubRegionOptions\LinearProgressTexture.lua
+
+Cache.lua
+
+CommonOptions.lua
+GroupOptions.lua
+DisplayOptions.lua
+TriggerOptions.lua
+LoadOptions.lua
+ActionOptions.lua
+AnimationOptions.lua
+InformationOptions.lua
+
+BuffTrigger2.lua
+GenericTrigger.lua
+
+MateAurasOptions.lua
+ConditionOptions.lua
+AuthorOptions.lua
+
+Changelog.lua
+
+OptionsFrames\OptionsFrame.lua
+
+# Groups
+OptionsFrames\CodeReview.lua
+OptionsFrames\IconPicker.lua
+OptionsFrames\ImportExport.lua
+OptionsFrames\ModelPicker.lua
+OptionsFrames\TextEditor.lua
+OptionsFrames\TexturePicker.lua
+OptionsFrames\Update.lua
+OptionsFrames\DebugLogFrame.lua
+
+# Misc frames
+OptionsFrames\MoverSizer.lua
+OptionsFrames\FrameChooser.lua
+
+AceGUI-Widgets\AceGUIWidget-MateAurasExpand.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasExpandSmall.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasIcon.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasNewHeaderButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasLoadedHeaderButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasDisplayButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasDropDownItemCurrency.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasPendingInstallButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasPendingUpdateButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasTextureButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasIconButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasMultiLineEditBox.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasMultiLineEditBoxWithEnter.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasNewButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasImportButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasToolbarButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasTwoColumnDropDown.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasSnippetButton.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasAnchorButtons.lua
+AceGUI-Widgets\AceGUIContainer-MateAurasTreeGroup.lua
+AceGUI-Widgets\AceGUIContainer-MateAurasInlineGroup.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasExpandAnchor.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasSpacer.lua
+AceGUI-Widgets\AceGuiWidget-MateAurasProgressBar.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasSpinBox.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasMiniTalent_TWW.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasScrollArea.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasInput.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasInputFocus.lua
+AceGUI-Widgets\AceGUIWidget-MateAurasInputWithIndentation.lua
+AceGUI-Widgets\AceGuiWidget-MateAurasMediaSound.lua
+AceGUI-Widgets\MateAurasStatusbarAtlasWidget.lua
