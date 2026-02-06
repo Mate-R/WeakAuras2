@@ -3091,7 +3091,21 @@ do
 
   ---@type fun(id): durationObject:userdata
   function MateAuras.GetSpellCooldownDuration(id)
-    return C_Spell.GetSpellChargeDuration(id) or C_Spell.GetSpellCooldownDuration(id)
+    local charge = C_Spell.GetSpellChargeDuration(id)
+    local cdInfo = C_Spell.GetSpellCooldown(id)
+    local cooldown
+    if cdInfo then
+      cooldown = C_Spell.GetSpellCooldownDuration(id)
+    end
+    return charge or cooldown
+  end
+
+  function MateAuras.IsSpellReadyFromDuration(id)
+    local durationObj = C_Spell.GetSpellCooldownDuration(id)
+    if not durationObj then
+      return nil
+    end
+    return durationObj:IsZero()
   end
 
   ---@type fun(id, runeDuration)

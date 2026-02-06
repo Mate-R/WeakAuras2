@@ -40,7 +40,7 @@ local function OnRename(_, uid, oldId, newId)
     for attached in pairs(targetToAttached[oldId]) do
       local data = MateAuras.GetData(attached)
       if data then
-        data.anchorFrameFrame = "MateAuras:" .. newId
+        data.anchorFrameFrame = "WeakAuras:" .. newId
         MateAuras.Add(data, true)
       end
 
@@ -60,7 +60,7 @@ local function OnAdd(_, uid, id, data, simpleChange)
   OnDelete(nil, uid, id)
   if data.anchorFrameType == "SELECTFRAME"
      and data.anchorFrameFrame and
-     (data.anchorFrameFrame:sub(1, 10) == "WeakAuras:" or data.anchorFrameFrame:sub(1, 9) == "MateAuras:")
+     data.anchorFrameFrame:sub(1, 10) == "WeakAuras:"
   then
     local target = data.anchorFrameFrame:match(":(.+)")
     attachedToTarget[data.id] = target

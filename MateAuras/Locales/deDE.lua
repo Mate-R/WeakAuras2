@@ -2267,7 +2267,7 @@ L["Trying to repair broken conditions in %s likely caused by a MateAuras bug."] 
 L["Twin Emperors"] = "Zwillingsimperatoren"
 L["Type"] = "Typ"
 --[[Translation missing --]]
-L["Unable to modernize aura '%s'. This is probably due to corrupt data or a bad migration, please report this to Mate-R."] = "Unable to modernize aura '%s'. This is probably due to corrupt data or a bad migration, please report this to Mate-Rb."
+L["Unable to modernize aura '%s'. This is probably due to corrupt data or a bad migration, please report this to Mate-R."] = "Unable to modernize aura '%s'. This is probably due to corrupt data or a bad migration, please report this to Mate-R."
 --[[Translation missing --]]
 L["Unaffected"] = "Unaffected"
 L["Undefined"] = "Undefiniert"

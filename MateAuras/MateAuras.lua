@@ -2663,8 +2663,6 @@ function Private.CheckForAnchorCycle(source)
       if data.anchorFrameType == "SELECTFRAME" and data.anchorFrameFrame then
         if data.anchorFrameFrame:sub(1, 10) == "WeakAuras:" then
           target = data.anchorFrameFrame:sub(11)
-        elseif data.anchorFrameFrame:sub(1, 9) == "MateAuras:" then
-          target = data.anchorFrameFrame:sub(10)
         end
       else
         target = data.parent
@@ -2695,10 +2693,8 @@ function Private.AddMany(tbl, takeSnapshots)
     end
     idtable[data.id] = data;
     if data.anchorFrameType == "SELECTFRAME" and data.anchorFrameFrame then
-      if data.anchorFrameFrame:sub(1, 10) == "WeakAuras:" then
+      if data.anchorFrameFrame:sub(1, 10) == "WeakAuras:"then
         anchorTargets[data.anchorFrameFrame:sub(11)] = data.id
-      elseif data.anchorFrameFrame:sub(1, 9) == "MateAuras:" then
-        anchorTargets[data.anchorFrameFrame:sub(10)] = data.id
       end
     end
   end
@@ -3197,7 +3193,7 @@ end
 
 local function cycleCheck(data)
   local id = data.id
-  if data.anchorFrameType == "SELECTFRAME" and data.anchorFrameFrame and (data.anchorFrameFrame:sub(1, 10) == "WeakAuras:" or data.anchorFrameFrame:sub(1, 9) == "MateAuras:") then
+  if data.anchorFrameType == "SELECTFRAME" and data.anchorFrameFrame and data.anchorFrameFrame:sub(1, 10) == "WeakAuras:" then
     if Private.CheckForAnchorCycle(id) then
       MateAuras.prettyPrint(L["Warning: Anchoring in aura '%s' is imposssible, due to an anchoring cycle"]:format(id))
       db.displays[id].anchorFrameType = "UIPARENT"
@@ -3850,15 +3846,6 @@ function Private.HandleGlowAction(actions, region)
           glow_frame = Private.regions[frame_name].region
           should_glow_frame = true
         end
-      elseif actions.glow_frame:sub(1, 9) == "MateAuras:" then
-        local frame_name = actions.glow_frame:sub(11)
-        if MateAuras.GetData(frame_name) then
-          Private.EnsureRegion(frame_name)
-        end
-        if Private.regions[frame_name] and Private.regions[frame_name].region then
-          glow_frame = Private.regions[frame_name].region
-          should_glow_frame = true
-        end
       else
         glow_frame = Private.GetSanitizedGlobal(actions.glow_frame)
         should_glow_frame = true
@@ -4348,7 +4335,7 @@ function MateAuras.GetAuraInstanceTooltipInfo(unit, auraInstanceId, filter)
     if not tooltipData then
       return nil, "", "none", 0
     end
-    local secondLine = tooltipData.lines[2] -- This is the line we want
+    local secondLine = not issecretvalue(tooltipData.lines) and tooltipData.lines[2] -- This is the line we want
     if secondLine and secondLine.leftText then
       tooltipText = secondLine.leftText
     end
@@ -5368,7 +5355,7 @@ local function ValueForSymbol(symbol, region, customCache, regionState, regionSt
       end
     end
     return ""
-  elseif regionState[symbol] then
+  elseif regionState[symbol] ~= nil then
     if(useHiddenStates or regionState.show) then
       local value = regionState[symbol]
       if formatters[symbol] then
@@ -6145,16 +6132,6 @@ local function GetAnchorFrame(data, region, parent)
   if (anchorFrameType == "SELECTFRAME" and anchorFrameFrame) then
     if(anchorFrameFrame:sub(1, 10) == "WeakAuras:") then
       local frame_name = anchorFrameFrame:sub(11);
-      if (frame_name == id) then
-        return parent;
-      end
-
-      if Private.regions[frame_name] and Private.regions[frame_name].region then
-        return Private.regions[frame_name].region;
-      end
-      postponeAnchor(id);
-    elseif (anchorFrameFrame:sub(1, 9) == "MateAuras:")  then
-      local frame_name = anchorFrameFrame:sub(10);
       if (frame_name == id) then
         return parent;
       end

@@ -371,11 +371,6 @@ local function BuildUidMap(data, children, type)
         if idToUid[target] then
           uidMap.map[data.uid].anchorFrameFrame = idToUid[target]
         end
-      elseif data.anchorFrameFrame:sub(1, 9) == "MateAuras:" then
-        local target = data.anchorFrameFrame:sub(10)
-        if idToUid[target] then
-          uidMap.map[data.uid].anchorFrameFrame = idToUid[target]
-        end
       end
     end
   end
@@ -546,7 +541,7 @@ local function BuildUidMap(data, children, type)
       local anchorUid = self.map[uid].anchorFrameFrame
       local target = self:Contains(anchorUid) and self:GetIdFor(anchorUid)
       if target then
-        data.anchorFrameFrame = "MateAuras:" .. target
+        data.anchorFrameFrame = "WeakAuras:" .. target
       end
     end
 

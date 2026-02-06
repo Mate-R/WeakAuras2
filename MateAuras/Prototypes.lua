@@ -3562,7 +3562,7 @@ Private.event_prototypes = {
         name = "percentpower",
         display = L["Power (%)"],
         type = "number",
-        init = "UnitPowerPercent(unit, powerType)",
+        init = "UnitPowerPercent(unit, powerType, false, CurveConstants.ScaleTo100)",
         store = true,
         conditionType = "number",
         multiEntry = {
@@ -4234,11 +4234,8 @@ Private.event_prototypes = {
         else
           stacks = maxCharges and maxCharges ~= 1 and charges or (spellCount and spellCount > 0 and spellCount) or nil;
         end
-        local durationObject, isReady
-        if isSecret then
-          durationObject = MateAuras.GetSpellCooldownDuration(effectiveSpellId)
-          isReady = MateAuras.IsSpellReady(effectiveSpellId)
-        end
+        local durationObject = MateAuras.GetSpellCooldownDuration(effectiveSpellId)
+        local isReady = MateAuras.IsSpellReady(effectiveSpellId)
         if showlossofcontrol and startTime and duration then
           local locStart, locDuration = MateAuras.GetSpellLossOfControlCooldown(spellname);
           if locStart and locDuration and (locStart + locDuration) > (startTime + duration) then
@@ -4636,6 +4633,24 @@ Private.event_prototypes = {
         init = "icon",
         test = "true",
         store = true
+      },
+      {
+        hidden = true,
+        name = "isReady",
+        display = L["Is Ready (Best guess)"],
+        init = 'isReady',
+        store = true,
+        test = "true",
+        conditionType = "bool",
+      },
+      {
+        hidden = true,
+        name = "isReady_secret",
+        display = L["Is Ready (Secret)"],
+        init = 'MateAuras.IsSpellReadyFromDuration(effectiveSpellId)',
+        store = true,
+        test = "true",
+        conditionType = "bool",
       },
     },
     hasSpellID = true,
