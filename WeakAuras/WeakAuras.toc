@@ -5,3 +5,4 @@
 ## IconTexture: Interface\AddOns\MateAuras\Media\Textures\icon.blp
 ## SavedVariables: WeakAurasSaved
 ## LoadSavedVariablesFirst: 1
+## LoadOnDemand: 1

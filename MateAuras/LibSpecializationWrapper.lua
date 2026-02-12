@@ -51,14 +51,18 @@ if LibSpec then
     if IsInRaid() then
       local max = GetNumGroupMembers()
       for i = 1, max do
-        local name = GetUnitName(MateAuras.raidUnits[i], true)
-        nameToUnitMap[name] = MateAuras.raidUnits[i]
+        if not C_Secrets.ShouldUnitIdentityBeSecret(MateAuras.raidUnits[i]) then
+          local name = GetUnitName(MateAuras.raidUnits[i], true)
+          nameToUnitMap[name] = MateAuras.raidUnits[i]
+        end
       end
     else
       local max = GetNumSubgroupMembers()
       for i = 1, max do
-        local name = GetUnitName(MateAuras.partyUnits[i], true)
-        nameToUnitMap[name] = MateAuras.partyUnits[i]
+        if not C_Secrets.ShouldUnitIdentityBeSecret(MateAuras.partyUnits[i]) then
+          local name = GetUnitName(MateAuras.partyUnits[i], true)
+          nameToUnitMap[name] = MateAuras.partyUnits[i]
+        end
       end
     end
 
@@ -108,6 +112,9 @@ if LibSpec then
       return (LibSpec.MySpecialization())
     end
 
+    if C_Secrets.ShouldUnitIdentityBeSecret(unit) then
+      return nil
+    end
     if nameToSpecMap[GetUnitName(unit, true)] then
       return nameToSpecMap[GetUnitName(unit, true)][1]
     end
@@ -116,6 +123,9 @@ if LibSpec then
   function Private.LibSpecWrapper.SpecRolePositionForUnit(unit)
     if Private.ExecEnv.UnitIsUnit(unit, "player") then
       return LibSpec.MySpecialization()
+    end
+    if C_Secrets.ShouldUnitIdentityBeSecret(unit) then
+      return nil
     end
     local data = nameToSpecMap[GetUnitName(unit, true)]
     if data then
@@ -154,6 +164,9 @@ if LibSpec then
     function Private.LibSpecWrapper.CheckTalentForUnit(unit, talentId)
       if Private.ExecEnv.UnitIsUnit(unit, "player") then
         return select(4, MateAuras.GetTalentById(talentId))
+      end
+      if C_Secrets.ShouldUnitIdentityBeSecret(unit) then
+        return nil
       end
       local unitName = GetUnitName(unit, true)
       if not nameToTalents[unitName] then
@@ -272,6 +285,9 @@ if LibSpec then
       if Private.ExecEnv.UnitIsUnit(unit, "player") then
         return select(4, MateAuras.GetTalentById(talentId))
       end
+      if C_Secrets.ShouldUnitIdentityBeSecret(unit) then
+        return nil
+      end
       local unitName = GetUnitName(unit, true)
       if not nameToTalents[unitName] then
         cacheData(unitName)
@@ -283,6 +299,9 @@ if LibSpec then
     end
 
     function Private.LibSpecWrapper.CheckGlyphForUnit(unit, glyphId)
+      if C_Secrets.ShouldUnitIdentityBeSecret(unit) then
+        return nil
+      end
       local unitName = GetUnitName(unit, true)
       if not nameToTalents[unitName] then
         cacheData(unitName)
