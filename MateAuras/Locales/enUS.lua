@@ -1583,6 +1583,7 @@ L["Is Ready (Secret)"] = "Is Ready (Secret)"
 L["Boolean"] = "Boolean"
 L["Apply when"] = "Apply when"
 L["Priority"] = "Priority"
+L["Show Cooldown Overlay"] = "Show Cooldown Overlay"
 
 
 -- Make missing translations available
