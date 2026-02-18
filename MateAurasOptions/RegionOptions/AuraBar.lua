@@ -524,12 +524,12 @@ local function createOptions(id, data)
       index = index + 0.01
     end
 
-    options["overlayclip"] = {
-      type = "toggle",
-      width = MateAuras.normalWidth,
-      name = L["Clip Overlays"],
-      order = 58.3 + index;
-    }
+    -- options["overlayclip"] = {
+    --   type = "toggle",
+    --   width = MateAuras.normalWidth,
+    --   name = L["Clip Overlays"],
+    --   order = 58.3 + index;
+    -- }
 
   end
 
