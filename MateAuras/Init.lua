@@ -537,34 +537,46 @@ end
 ---@type MateAurasSaved
 MateAurasSaved = MateAurasSaved or {};
 if not next(MateAurasSaved) or not (MateAurasSaved and MateAurasSaved.displays and next(MateAurasSaved.displays)) then
-  C_AddOns.EnableAddOn("WeakAuras")
-  C_AddOns.LoadAddOn("WeakAuras")
-  if WeakAurasSaved then
-    MateAurasSaved = CopyTable(WeakAurasSaved)
-    MateAurasSaved.MateMigrated = true
+  C_AddOns.EnableAddOn("Mate2Auras")
+  C_AddOns.LoadAddOn("Mate2Auras")
+  if Mate2AurasSaved then
+    MateAurasSaved = CopyTable(Mate2AurasSaved)
+    MateAurasSaved.mateMigrated = true
+    C_AddOns.DisableAddOn("Mate2Auras")
     C_AddOns.DisableAddOn("WeakAuras")
+  else
+    C_AddOns.EnableAddOn("WeakAuras")
+    C_AddOns.LoadAddOn("WeakAuras")
+    if WeakAurasSaved then
+      MateAurasSaved = CopyTable(WeakAurasSaved)
+      MateAurasSaved.MateMigrated = true
+      C_AddOns.DisableAddOn("Mate2Auras")
+      C_AddOns.DisableAddOn("WeakAuras")
+    end
   end
 end
 if not MateAurasSaved.MateMigrated then
   if not MateAurasSaved.migrationPromptCanceled then
-    C_AddOns.EnableAddOn("WeakAuras")
-    C_AddOns.LoadAddOn("WeakAuras")
+    C_AddOns.EnableAddOn("Mate2Auras")
+    C_AddOns.LoadAddOn("Mate2Auras")
   end
-  if type(WeakAurasSaved) == "table" and type(WeakAurasSaved.displays) == "table" and next(WeakAurasSaved.displays) then
+  if type(Mate2AurasSaved) == "table" and type(Mate2AurasSaved.displays) == "table" and next(Mate2AurasSaved.displays) then
     libsAreOk = false
-    StaticPopupDialogs["MATEAURAS_MIGRATION_PROMPT"] = {
-      text = "MateAuras가 WeakAuras의 기존 데이터를 감지했습니다. 기존 WeakAuras 데이터를 MateAuras로 이전하시겠습니까? |cffFF0000이 작업은 현재 위크오라 데이터를 삭제하며 되돌릴 수 없습니다.|r\n\n현재 사용중인 데이터를 백업 후 애드온 목록에서 \"MateAuras Settings Migration\"을 불러오면 이 안내를 다시 볼 수 있습니다.",
-      button1 = YES or "네",
-      button2 = NO or "아니오",
+    StaticPopupDialogs["MateAuras_MIGRATION_PROMPT"] = {
+      text = "MateAuras가 Mate2Auras의 기존 데이터를 감지했습니다. 기존 Mate2Auras 데이터를 MateAuras로 이전하시겠습니까? |cffFF0000이 작업은 현재 위크오라 데이터를 삭제하며 되돌릴 수 없습니다.|r\n\n현재 사용중인 데이터를 백업 후 애드온 목록에서 \"MateAuras Settings Migration 2\"을 불러오면 이 안내를 다시 볼 수 있습니다.",
+      button1 = YES or "Yes",
+      button2 = NO or "No",
       showAlert = true,
       OnAccept = function()
-        MateAurasSaved = CopyTable(WeakAurasSaved)
+        MateAurasSaved = CopyTable(Mate2AurasSaved)
         MateAurasSaved.MateMigrated = true
+        C_AddOns.DisableAddOn("Mate2Auras")
         C_AddOns.DisableAddOn("WeakAuras")
         C_UI.Reload()
       end,
       OnCancel = function()
         MateAurasSaved.migrationPromptCanceled = true
+        C_AddOns.DisableAddOn("Mate2Auras")
         C_AddOns.DisableAddOn("WeakAuras")
         C_UI.Reload()
       end,
@@ -573,7 +585,40 @@ if not MateAurasSaved.MateMigrated then
       hideOnEscape = false,
       preferredIndex = 5,
     }
-    StaticPopup_Show("MATEAURAS_MIGRATION_PROMPT")
+    StaticPopup_Show("MateAuras_MIGRATION_PROMPT")
+    return
+  end
+
+  if not MateAurasSaved.migrationPromptCanceled then
+    C_AddOns.EnableAddOn("WeakAuras")
+    C_AddOns.LoadAddOn("WeakAuras")
+  end
+  if type(WeakAurasSaved) == "table" and type(WeakAurasSaved.displays) == "table" and next(WeakAurasSaved.displays) then
+    libsAreOk = false
+    StaticPopupDialogs["MateAuras_MIGRATION_PROMPT"] = {
+      text = "MateAuras가 WeakAuras의 기존 데이터를 감지했습니다. 기존 WeakAuras 데이터를 MateAuras로 이전하시겠습니까? |cffFF0000이 작업은 현재 위크오라 데이터를 삭제하며 되돌릴 수 없습니다.|r\n\n현재 사용중인 데이터를 백업 후 애드온 목록에서 \"MateAuras Settings Migration\"을 불러오면 이 안내를 다시 볼 수 있습니다.",
+      button1 = YES or "네",
+      button2 = NO or "아니오",
+      showAlert = true,
+      OnAccept = function()
+        MateAurasSaved = CopyTable(WeakAurasSaved)
+        MateAurasSaved.MateMigrated = true
+        C_AddOns.DisableAddOn("Mate2Auras")
+        C_AddOns.DisableAddOn("WeakAuras")
+        C_UI.Reload()
+      end,
+      OnCancel = function()
+        MateAurasSaved.migrationPromptCanceled = true
+        C_AddOns.DisableAddOn("Mate2Auras")
+        C_AddOns.DisableAddOn("WeakAuras")
+        C_UI.Reload()
+      end,
+      timeout = 0,
+      whileDead = true,
+      hideOnEscape = false,
+      preferredIndex = 5,
+    }
+    StaticPopup_Show("MateAuras_MIGRATION_PROMPT")
   end
 end
 

@@ -1,0 +1,8 @@
+## Interface: 120000, 120001
+## Title: Mate2Auras Settings Migration 2
+## Author: Mate-R
+## Version: @project-version@
+## IconTexture: Interface\AddOns\MateAuras\Media\Textures\icon.blp
+## SavedVariables: Mate2AurasSaved
+## LoadSavedVariablesFirst: 1
+## LoadOnDemand: 1

@@ -61,3 +61,4 @@ move-folders:
   MateAuras/Libs/LibRangeCheck-3.0/LibRangeCheck-3.0: MateAuras/Libs/LibRangeCheck-3.0
   MateAurasOptions/Libs/LibAPIAutoComplete-1.0/LibAPIAutoComplete-1.0: MateAurasOptions/Libs/LibAPIAutoComplete-1.0
   MateAuras/WeakAuras: WeakAuras
+  MateAuras/Mate2Auras: Mate2Auras
