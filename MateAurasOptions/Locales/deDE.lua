@@ -1,12 +1,12 @@
-if not MateAuras.IsLibsOK() then return end
+if not M33kAuras.IsLibsOK() then return end
 
 if (GAME_LOCALE or GetLocale()) ~= "deDE" then
   return
 end
 
-local L = MateAuras.L
+local L = M33kAuras.L
 
--- MateAuras/Options
+-- M33kAuras/Options
 	L[" and |cFFFF0000mirrored|r"] = "und |cFFFF0000gespiegelt|r"
 	--[[Translation missing --]]
 	L["-- Do not remove this comment, it is part of this aura: "] = "-- Do not remove this comment, it is part of this aura: "
@@ -139,8 +139,8 @@ local L = MateAuras.L
 	L["A group that dynamically controls the positioning of its children"] = "Eine Gruppe, die dynamisch die Position ihrer Kinder steuert"
 	--[[Translation missing --]]
 	L[ [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=] ] = [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=]
+Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=] ] = [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
+Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=]
 	--[[Translation missing --]]
 	L["A Unit ID (e.g., party1)."] = "A Unit ID (e.g., party1)."
 	--[[Translation missing --]]
@@ -286,7 +286,7 @@ Off Screen]=]
 	--[[Translation missing --]]
 	L["Changelog"] = "Changelog"
 	--[[Translation missing --]]
-	L["Chat with MateAuras experts on our Discord server."] = "Chat with MateAuras experts on our Discord server."
+	L["Chat with M33kAuras experts on our Discord server."] = "Chat with M33kAuras experts on our Discord server."
 	L["Check On..."] = "Prüfen auf..."
 	--[[Translation missing --]]
 	L["Check out our wiki for a large collection of examples and snippets."] = "Check out our wiki for a large collection of examples and snippets."
@@ -376,7 +376,7 @@ Mehrere Ereignisse können durch Komma oder Leerzeichen getrennt werden.
 |cFF4444FFBeispiel:|r
 UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Custom trigger status tooltip"] = [=[Wähle die Events, die den benutzerdefinierten Auslöser aufrufen sollen.
-Da es sich um einen Zustands-Auslöser handelt, kann es passieren, dass MateAuras nicht die in der WoW-API spezifizierten Argumente übergibt.
+Da es sich um einen Zustands-Auslöser handelt, kann es passieren, dass M33kAuras nicht die in der WoW-API spezifizierten Argumente übergibt.
 Mehrere Events können durch Komma oder Leerzeichen getrennt werden.
 
 |cFF4444FFBeispiel:|r
@@ -684,7 +684,6 @@ Falls die Zahl als Dezimalzahl (z.B. 0.5), Bruch (z.B. 1/2) oder Prozentsatz (z.
 	--[[Translation missing --]]
 	L["Ignore out of casting range"] = "Ignore out of casting range"
 	--[[Translation missing --]]
-	L["Ignore out of checking range"] = "Ignore out of checking range"
 	--[[Translation missing --]]
 	L["Ignore Wago updates"] = "Ignore Wago updates"
 	L["Ignored"] = "Ignoriert"
@@ -1012,7 +1011,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	L["Require unit from trigger"] = "Require unit from trigger"
 	L["Required for Activation"] = "Benötigt zur Aktivierung"
 	--[[Translation missing --]]
-	L["Requires LibSpecialization, that is e.g. a up-to date MateAuras version"] = "Requires LibSpecialization, that is e.g. a up-to date MateAuras version"
+	L["Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"] = "Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"
 	--[[Translation missing --]]
 	L["Reset all options to their default values."] = "Reset all options to their default values."
 	L["Reset Entry"] = "Eintrag zurücksetzen"
@@ -1233,7 +1232,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=]
 	L["The trigger number is optional. When no trigger number is specified, the trigger selected via dynamic information will be used."] = "The trigger number is optional. When no trigger number is specified, the trigger selected via dynamic information will be used."
 	L["The type of trigger"] = "Auslösertyp"
 	--[[Translation missing --]]
-	L["The MateAuras Options Addon version %s doesn't match the MateAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling MateAuras"] = "The MateAuras Options Addon version %s doesn't match the MateAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling MateAuras"
+	L["The M33kAuras Options Addon version %s doesn't match the M33kAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling M33kAuras"] = "The M33kAuras Options Addon version %s doesn't match the M33kAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling M33kAuras"
 	L["Then "] = "Dann"
 	--[[Translation missing --]]
 	L["There are several special codes available to make this text dynamic. Click to view a list with all dynamic text codes."] = "There are several special codes available to make this text dynamic. Click to view a list with all dynamic text codes."
@@ -1256,9 +1255,9 @@ Make sure you can trust the person who sent it!]=]
 It might not work correctly!]=] ] = [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=]
 	--[[Translation missing --]]
-	L[ [=[This aura was created with a newer version of MateAuras.
-Upgrade your version of MateAuras or wait for next release before installing this aura.]=] ] = [=[This aura was created with a newer version of MateAuras.
-Upgrade your version of MateAuras or wait for next release before installing this aura.]=]
+	L[ [=[This aura was created with a newer version of M33kAuras.
+Upgrade your version of M33kAuras or wait for next release before installing this aura.]=] ] = [=[This aura was created with a newer version of M33kAuras.
+Upgrade your version of M33kAuras or wait for next release before installing this aura.]=]
 	L["This display is currently loaded"] = "Diese Anzeige ist momentan geladen"
 	L["This display is not currently loaded"] = "Diese Anzeige ist momentan nicht geladen"
 	--[[Translation missing --]]
@@ -1357,7 +1356,6 @@ Upgrade your version of MateAuras or wait for next release before installing thi
 	--[[Translation missing --]]
 	L["Uses Texture Coordinates to rotate the texture."] = "Uses Texture Coordinates to rotate the texture."
 	--[[Translation missing --]]
-	L["Uses UnitIsVisible() to check if game client has loaded a object for this unit. This distance is around 100 yards. This is polled every second."] = "Uses UnitIsVisible() to check if game client has loaded a object for this unit. This distance is around 100 yards. This is polled every second."
 	--[[Translation missing --]]
 	L["Value"] = "Value"
 	--[[Translation missing --]]
@@ -1382,9 +1380,9 @@ Upgrade your version of MateAuras or wait for next release before installing thi
 	--[[Translation missing --]]
 	L["We thank"] = "We thank"
 	--[[Translation missing --]]
-	L["MateAuras %s on WoW %s"] = "MateAuras %s on WoW %s"
+	L["M33kAuras %s on WoW %s"] = "M33kAuras %s on WoW %s"
 	--[[Translation missing --]]
-	L["MateAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "MateAuras recommends using spell ids instead of names. Spell ids are automatically localized."
+	L["M33kAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "M33kAuras recommends using spell ids instead of names. Spell ids are automatically localized."
 	--[[Translation missing --]]
 	L["What do you want to do?"] = "What do you want to do?"
 	--[[Translation missing --]]
@@ -1418,19 +1416,19 @@ Would you like to continue?]=] ] = [=[You are about to Import an Aura with custo
 
 Would you like to continue?]=]
 	--[[Translation missing --]]
-	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
+	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
 
-MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
+M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
 
-MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
+M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
 	--[[Translation missing --]]
-	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
+	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
 
-MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
+M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
 
-MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
+M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
 	--[[Translation missing --]]
-	L["You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."
+	L["You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."
 	--[[Translation missing --]]
 	L["Your Saved Snippets"] = "Your Saved Snippets"
 	L["Z Offset"] = "Z-Versatz"

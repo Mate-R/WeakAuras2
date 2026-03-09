@@ -1,12 +1,12 @@
-if not MateAuras.IsLibsOK() then return end
+if not M33kAuras.IsLibsOK() then return end
 
 if (GAME_LOCALE or GetLocale()) ~= "zhCN" then
   return
 end
 
-local L = MateAuras.L
+local L = M33kAuras.L
 
--- MateAuras/Options
+-- M33kAuras/Options
 	L[" and |cFFFF0000mirrored|r"] = "并且|cFFFF0000镜像|r"
 	L["-- Do not remove this comment, it is part of this aura: "] = "-- 不要移除此注释，这是此光环的一部分："
 	L[" rotated |cFFFF0000%s|r degrees"] = "旋转|cFFFF0000%s|r度"
@@ -120,7 +120,7 @@ local L = MateAuras.L
 	L["A 64x64 pixels icon"] = "64x64像素图标"
 	L["A group that dynamically controls the positioning of its children"] = "动态控制子项目位置的群组"
 	L[ [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=] ] = "冷却文本会根据原生界面设置（可能被某些插件改动）自动显示。当你想隐藏冷却文本时，或者使用MateAuras文本替代冷却文本时，启用此设置。"
+Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=] ] = "冷却文本会根据原生界面设置（可能被某些插件改动）自动显示。当你想隐藏冷却文本时，或者使用M33kAuras文本替代冷却文本时，启用此设置。"
 	L["A Unit ID (e.g., party1)."] = "单位 ID（如 party1）。"
 	L["Ace: Funkeh, Nevcairiel"] = "Ace: Funkeh, Nevcairiel"
 	L["Active Aura Filters and Info"] = "活跃光环过滤器与信息"
@@ -221,7 +221,7 @@ Off Screen]=] ] = "光环在屏幕外"
 	L["Cast by a Player Character"] = "玩家角色施放"
 	L["Categories to Update"] = "即将更新的类"
 	L["Changelog"] = "更新日志"
-	L["Chat with MateAuras experts on our Discord server."] = "在我们的Discord服务器上与MateAuras专家聊天。"
+	L["Chat with M33kAuras experts on our Discord server."] = "在我们的Discord服务器上与M33kAuras专家聊天。"
 	L["Check On..."] = "检查..."
 	L["Check out our wiki for a large collection of examples and snippets."] = "查看我们的Wiki，获取大量的例子与代码片段。"
 	L["Children:"] = "子项目："
@@ -285,7 +285,7 @@ UNIT_POWER_UPDATE:player, UNIT_AURA:nameplate:group PLAYER_TARGET_CHANGED CLEU:S
 
 ]=]
 	L["Custom trigger status tooltip"] = [=[选择用于检查自定义触发器的事件。
-因为这一个是状态触发器, 指定的事件 可以被 MateAuras 调用, 而不需指定参数.
+因为这一个是状态触发器, 指定的事件 可以被 M33kAuras 调用, 而不需指定参数.
 如果有多个事件,可以用逗号或空白分隔。
 
 |cFF4444FF例：|r
@@ -488,7 +488,6 @@ Bleed classification via LibDispel]=] ] = "仅过滤给定类型的可驱散的�
 	L["If unchecked, then a default color will be used (usually yellow)"] = "如果不勾选，则使用默认颜色（通常是黄色）"
 	L["If unchecked, then this space will fill the entire line it is on in User Mode."] = "如果不勾选，则在用户模式下此空白区域将填充一整行。"
 	L["Ignore out of casting range"] = "忽略超出施法范围"
-	L["Ignore out of checking range"] = "忽略超出检查范围"
 	L["Ignore Wago updates"] = "忽略Wago更新"
 	L["Ignored"] = "被忽略"
 	L["Ignored Aura Name"] = "忽略光环名称"
@@ -691,7 +690,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件发�
 	L["Report bugs on our issue tracker."] = "在我们的问题追踪器里回报故障。"
 	L["Require unit from trigger"] = "需要在触发器中指定单位"
 	L["Required for Activation"] = "激活需要的条件"
-	L["Requires LibSpecialization, that is e.g. a up-to date MateAuras version"] = "需要LibSpecialization，可从最新的MateAuras版本中获取。"
+	L["Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"] = "需要LibSpecialization，可从最新的M33kAuras版本中获取。"
 	L["Reset all options to their default values."] = "重置所有选项为默认值"
 	L["Reset Entry"] = "重置条目"
 	L["Reset to Defaults"] = "重置为默认"
@@ -829,7 +828,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件发�
 	L["The Multi Target mode requires a name or spell id filter"] = "多目标模式需要名称或法术id过滤器"
 	L["The trigger number is optional. When no trigger number is specified, the trigger selected via dynamic information will be used."] = "触发器编号为可选。当不指定触发器编号时，将使用通过动态信息选择的触发器。"
 	L["The type of trigger"] = "触发器类型"
-	L["The MateAuras Options Addon version %s doesn't match the MateAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling MateAuras"] = "MateAuras 选项插件版本 %s 与 MateAuras 本体版本 %s 不匹配。如果您在游戏运行时更新了插件，请尝试重新启动《魔兽世界》。否则请尝试重新安装 MateAuras"
+	L["The M33kAuras Options Addon version %s doesn't match the M33kAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling M33kAuras"] = "M33kAuras 选项插件版本 %s 与 M33kAuras 本体版本 %s 不匹配。如果您在游戏运行时更新了插件，请尝试重新启动《魔兽世界》。否则请尝试重新安装 M33kAuras"
 	L["Then "] = "然后"
 	L["There are several special codes available to make this text dynamic. Click to view a list with all dynamic text codes."] = "有几种特殊代码可用于使此文本动态化。点击查看包含所有动态文本代码的列表。"
 	L["This adds %raidMark as text replacements."] = "这将添加 %raidMark 作为文本替换。"
@@ -841,9 +840,9 @@ Make sure you can trust the person who sent it!]=] ] = "此光环包含自定义
 	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "此光环被标记为光环‘%s’的新版本，但无法用于更新这些光环。此问题常见于某些光环曾被移出组。"
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = "此光环在一个不同版本（%s）的魔兽世界中创建。它可能无法正常工作！"
-	L[ [=[This aura was created with a newer version of MateAuras.
-Upgrade your version of MateAuras or wait for next release before installing this aura.]=] ] = [=[此光环由更新版本的MateAuras创建。
-在导入此光环前，请更新MateAuras版本或等待下次发布。]=]
+	L[ [=[This aura was created with a newer version of M33kAuras.
+Upgrade your version of M33kAuras or wait for next release before installing this aura.]=] ] = [=[此光环由更新版本的M33kAuras创建。
+在导入此光环前，请更新M33kAuras版本或等待下次发布。]=]
 	L["This display is currently loaded"] = "此图示已载入"
 	L["This display is not currently loaded"] = "此图示未载入"
 	L["This display is on standby, it will be loaded when needed."] = "此图示已就绪，将在需要的时候载入。"
@@ -901,7 +900,6 @@ Upgrade your version of MateAuras or wait for next release before installing thi
 	L["Used in Auras:"] = "在下列光环中被使用："
 	L["Used in auras:"] = "在下列光环中被使用："
 	L["Uses Texture Coordinates to rotate the texture."] = "使用材质坐标以旋转材质"
-	L["Uses UnitIsVisible() to check if game client has loaded a object for this unit. This distance is around 100 yards. This is polled every second."] = "使用UnitIsVisible()检查游戏客户端是否加载此单位的对象。此距离大概为100码。每秒检查一次。"
 	L["Value"] = "值"
 	L["Value %i"] = "值 %i"
 	L["Values are in normalized rgba format."] = "数值为标准化的 RGBA 格式"
@@ -916,8 +914,8 @@ Upgrade your version of MateAuras or wait for next release before installing thi
 	L["View custom code"] = "查看自定义代码"
 	L["Voice Settings"] = "语音设置"
 	L["We thank"] = "我们感谢"
-	L["MateAuras %s on WoW %s"] = "MateAuras %s + WoW %s"
-	L["MateAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "WA建议使用法术id而不是法术名称。法术id会自动本地化。"
+	L["M33kAuras %s on WoW %s"] = "M33kAuras %s + WoW %s"
+	L["M33kAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "WA建议使用法术id而不是法术名称。法术id会自动本地化。"
 	L["What do you want to do?"] = "你想要做什么？"
 	L["Whole Area"] = "整个区域"
 	L["wrapping"] = "折叠"
@@ -938,19 +936,19 @@ Upgrade your version of MateAuras or wait for next release before installing thi
 |cFFFF0000There is a risk the custom code could be used to kill your hardcore character!|r
 
 Would you like to continue?]=] ] = "您将在硬核服务器上导入带有自定义Lua代码的Aura。|cFFFF0000这有风险，自定义代码可以用来杀死你的硬核角色！你想继续吗？"
-	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
+	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
 
-MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，MateAuras 将运行自定义锚点代码。
+M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，M33kAuras 将运行自定义锚点代码。
 
-如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，MateAuras 始终会运行自定义锚点代码。]=]
-	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
+如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，M33kAuras 始终会运行自定义锚点代码。]=]
+	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
 
-MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，MateAuras 将运行自定义生长代码。
+M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，M33kAuras 将运行自定义生长代码。
 
-如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，MateAuras 始终会运行自定义生长代码。]=]
-	L["You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，MateAuras 将运行自定义排序代码。
+如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，M33kAuras 始终会运行自定义生长代码。]=]
+	L["You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = [=[你可以添加一个由英文逗号分隔的状态键列表，当它对应的值被改变时，M33kAuras 将运行自定义排序代码。
 
-如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，MateAuras 始终会运行自定义排序代码。]=]
+如果你在此列表中包含 'changed'，或者一个框体被添加、移除、重新排序，M33kAuras 始终会运行自定义排序代码。]=]
 	L["Your Saved Snippets"] = "已保存片段"
 	L["Z Offset"] = "Z 偏移"
 	L["Z Rotation"] = "Z轴旋转"

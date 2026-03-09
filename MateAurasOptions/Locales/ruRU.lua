@@ -1,14 +1,14 @@
-if not MateAuras.IsLibsOK() then return end
+if not M33kAuras.IsLibsOK() then return end
 
 if (GAME_LOCALE or GetLocale()) ~= "ruRU" then
   return
 end
 
-local L = MateAuras.L
--- if MateAurasSaved.disableRuLocale then -- assume that MateAurasSaved is loaded by the time
+local L = M33kAuras.L
+-- if M33kAurasSaved.disableRuLocale then -- assume that M33kAurasSaved is loaded by the time
 --   return
 -- end
--- MateAuras/Options
+-- M33kAuras/Options
 L[" and |cFFFF0000mirrored|r"] = "; Отражение"
 L["-- Do not remove this comment, it is part of this aura: "] = "-- Не удаляйте этот комментарий! Он является частью кода индикации "
 L[" rotated |cFFFF0000%s|r degrees"] = "; Поворот %.4g"
@@ -121,9 +121,9 @@ L["A 48x48 pixels icon"] = "Иконка 48х48 пикселей"
 L["A 64x64 pixels icon"] = "Иконка 64х64 пикселей"
 L["A group that dynamically controls the positioning of its children"] = "Группа, динамически изменяющая позиции своих индикаций"
 L[ [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=] ] = [=[Отсчет времени будет отображаться в соответствии с настройками интерфейса (переопределено некоторыми аддонами).
+Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=] ] = [=[Отсчет времени будет отображаться в соответствии с настройками интерфейса (переопределено некоторыми аддонами).
 
-Включите этот параметр, если вы хотите скрыть этот отсчет или использовать текст MateAuras для его отображения.]=]
+Включите этот параметр, если вы хотите скрыть этот отсчет или использовать текст M33kAuras для его отображения.]=]
 L["A Unit ID (e.g., party1)."] = [=[Введите идентификатор единицы (UID, Unit ID).
 Например: party4, raid7, arena3, boss2, nameplate6, target, focus, pet и др.]=]
 L["Actions"] = "Действия"
@@ -243,7 +243,7 @@ L["Cast by a Player Character"] = "Применён игроком"
 L["Categories to Update"] = "Категории для обновления"
 L["Center"] = "Центр"
 L["Chat Message"] = "Сообщение в чат"
-L["Chat with MateAuras experts on our Discord server."] = "Общайтесь со знатоками MateAuras на нашем сервере Discord."
+L["Chat with M33kAuras experts on our Discord server."] = "Общайтесь со знатоками M33kAuras на нашем сервере Discord."
 L["Check On..."] = "Проверять..."
 L["Check out our wiki for a large collection of examples and snippets."] = "Ознакомьтесь с нашим вики-разделом с большой коллекцией примеров и фрагментов кода."
 L["Children:"] = "Индикации:"
@@ -310,7 +310,7 @@ L["Custom trigger event tooltip"] = [=[Напишите события, кото
 |cFF4444FFПример:|r
 UNIT_POWER  UNIT_AURA, PLAYER_TARGET_CHANGED]=]
 L["Custom trigger status tooltip"] = [=[Напишите события, которые будут вызывать проверку вашего триггера. Несколько событий должны быть разделены запятыми или пробелами.
-Поскольку это триггер статуса, указанные события могут быть переданы MateAuras без ожидаемых аргументов.
+Поскольку это триггер статуса, указанные события могут быть переданы M33kAuras без ожидаемых аргументов.
 
 |cFF4444FFПример:|r
 UNIT_POWER  UNIT_AURA, PLAYER_TARGET_CHANGED]=]
@@ -555,7 +555,6 @@ L["If unchecked, then this space will fill the entire line it is on in User Mode
 L["Ignore Dead"] = "Не учитывать мёртвые цели"
 L["Ignore Disconnected"] = "Не учитывать игроков не в сети"
 L["Ignore out of casting range"] = "Не учитывать единицы вне зоны действия"
-L["Ignore out of checking range"] = "Не учитывать единицы вне зоны видимости"
 L["Ignore Self"] = "Не учитывать себя"
 L["Ignore Wago updates"] = "Игнорировать обновления Wago"
 L["Ignored"] = "Не использован"
@@ -639,7 +638,7 @@ L["Model"] = "Модель"
 L["Model %s"] = "Модель %s"
 L["Model Picker"] = "Средство выбора модели"
 L["Model Settings"] = "Настройки модели"
-L["ModelPaths could not be loaded, the addon is %s"] = "Не удалось загрузить MateAuras Model Paths. Причина - %s"
+L["ModelPaths could not be loaded, the addon is %s"] = "Не удалось загрузить M33kAuras Model Paths. Причина - %s"
 L["Move Above Group"] = "Переместить выше группы"
 L["Move Below Group"] = "Переместить ниже группы"
 L["Move Down"] = "Переместить вниз"
@@ -780,7 +779,7 @@ L["Repeat every"] = "Повторять каждые"
 L["Report bugs on our issue tracker."] = "Сообщите об ошибках на наш баг-трекер."
 L["Require unit from trigger"] = "Требуется единица от триггера"
 L["Required for Activation"] = "Необходимо для активации"
-L["Requires LibSpecialization, that is e.g. a up-to date MateAuras version"] = "Требуется LibSpecialization, т.е. актуальная версия MateAuras"
+L["Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"] = "Требуется LibSpecialization, т.е. актуальная версия M33kAuras"
 L["Requires syncing the specialization via LibSpecialization."] = "Требуется синхронизация специализации через LibSpecialization."
 L["Reset all options to their default values."] = "Возвращает всем параметрам значения по умолчанию, заданные автором."
 L["Reset Entry"] = "Сбросить запись"
@@ -899,7 +898,7 @@ L["Sub Elements"] = "Внутренние элементы"
 L["Sub Option %i"] = "Внутренний параметр %i"
 L["Supports multiple entries, separated by commas"] = "Можно указать несколько значений, разделенных запятыми."
 L["Swipe Overlay Settings"] = "Настройки восстановления (наложение)"
-L["Templates could not be loaded, the addon is %s"] = "Не удалось загрузить MateAuras Templates. Причина - %s"
+L["Templates could not be loaded, the addon is %s"] = "Не удалось загрузить M33kAuras Templates. Причина - %s"
 L["Temporary Group"] = "Временная группа"
 L["Text"] = "Текст"
 L["Text %s"] = "Текст %s"
@@ -934,9 +933,9 @@ L["This aura is marked as an update to auras '%s', but cannot be used to update 
 L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = [=[Индикация была создана в другой версии World of Warcraft (%s).
 Она может работать неправильно!]=]
-L[ [=[This aura was created with a newer version of MateAuras.
-Upgrade your version of MateAuras or wait for next release before installing this aura.]=] ] = [=[Индикация была создана в новой версии MateAuras.
-Прежде чем импортировать её, обновите вашу версию аддона или дождитесь следующего релиза MateAuras.]=]
+L[ [=[This aura was created with a newer version of M33kAuras.
+Upgrade your version of M33kAuras or wait for next release before installing this aura.]=] ] = [=[Индикация была создана в новой версии M33kAuras.
+Прежде чем импортировать её, обновите вашу версию аддона или дождитесь следующего релиза M33kAuras.]=]
 L["This display is currently loaded"] = "Эта индикация загружена"
 L["This display is not currently loaded"] = "Эта индикация не загружена"
 L["This display is on standby, it will be loaded when needed."] = "Эта индикация находится в режиме ожидания, она будет загружена при необходимости."
@@ -1000,7 +999,6 @@ L["Used in Auras:"] = "Использовано в индикациях:"
 L["Used in auras:"] = "Использовано в индикациях:"
 L["Uses Texture Coordinates to rotate the texture."] = "Использует координаты текстуры для её вращения."
 L["Uses UnitInRange() to check if in range. Matches default raid frames out of range behavior, which is between 25 to 40 yards depending on your class and spec."] = "Использует функцию UnitInRange для проверки, находится ли указанная единица рядом с игроком. В этом смысле соответствует поведению стандартных рамок рейда (raid frames). Расстояние составляет от 25 до 40 метров в зависимости от вашего класса и специализации."
-L["Uses UnitIsVisible() to check if game client has loaded a object for this unit. This distance is around 100 yards. This is polled every second."] = "Использует функцию UnitIsVisible для проверки, может ли клиент игры видеть указанную единицу (загружен ли объект). Не определяет, находится ли единица в поле зрения. Расстояние составляет 100 метров. Опрос происходит каждую секунду."
 L["Value"] = "Значение"
 L["Value %i"] = "Значение %i"
 L["Values are in normalized rgba format."] = "Значения представлены в нормализованном формате RGBA (от 0 до 1)."
@@ -1016,7 +1014,7 @@ L["Vertical Bar"] = "Вертикальная полоса"
 L["View"] = "Вид"
 L["View custom code"] = "Просмотреть код"
 L["Voice"] = "Голос"
-L["MateAuras %s on WoW %s"] = "MateAuras: %s. Интерфейс: %s"
+L["M33kAuras %s on WoW %s"] = "M33kAuras: %s. Интерфейс: %s"
 L["What do you want to do?"] = "Что вы хотите сделать?"
 L["Whole Area"] = "Вся область"
 L["Width"] = "Ширина"
@@ -1038,19 +1036,19 @@ L["You are about to delete %d aura(s). |cFFFF0000This cannot be undone!|r Would 
 L["You are about to delete a trigger. |cFFFF0000This cannot be undone!|r Would you like to continue?"] = [=[Вы собираетесь удалить триггер.
 |cFFFF0000Это действие необратимо!|r Продолжить?]=]
 --[[Translation missing --]]
-L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
+L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
 
-MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
+M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
 
-MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
+M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
 --[[Translation missing --]]
-L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
+L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
 
-MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
+M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
 
-MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
+M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=]
 --[[Translation missing --]]
-L["You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."
+L["You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."
 L["Your Saved Snippets"] = "Ваши фрагменты кода"
 L["Z Offset"] = "Смещение по Z"
 L["Z Rotation"] = "Поворот по Z"
