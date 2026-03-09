@@ -1,12 +1,12 @@
-if not M33kAuras.IsLibsOK() then return end
+if not MateAuras.IsLibsOK() then return end
 
 if (GAME_LOCALE or GetLocale()) ~= "zhTW" then
   return
 end
 
-local L = M33kAuras.L
+local L = MateAuras.L
 
--- M33kAuras/Options
+-- MateAuras/Options
 	L[" and |cFFFF0000mirrored|r"] = "和 |cFFFF0000鏡射|r"
 	L["-- Do not remove this comment, it is part of this aura: "] = "-- 不要刪除此註解，這是此提醒效果的一部分: "
 	L[" rotated |cFFFF0000%s|r degrees"] = "旋轉 |cFFFF0000%s|r 度"
@@ -112,7 +112,7 @@ local L = M33kAuras.L
 	L["A 64x64 pixels icon"] = "64x64 大小的圖示"
 	L["A group that dynamically controls the positioning of its children"] = "可動態控制子項目位置的群組"
 	L[ [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=] ] = "時間數字會自動依照遊戲內建的選項 (或被其他插件取代) 來決定是否顯示。如果你想要隱藏這個時間數字，或是使用 M33kAuras  的文字來顯示時間，請啟用此設定。"
+Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=] ] = "時間數字會自動依照遊戲內建的選項 (或被其他插件取代) 來決定是否顯示。如果你想要隱藏這個時間數字，或是使用 MateAuras  的文字來顯示時間，請啟用此設定。"
 	L["A Unit ID (e.g., party1)."] = "單位 ID (例如 party1)。"
 	L["Ace: Funkeh, Nevcairiel"] = "Ace: Funkeh, Nevcairiel"
 	L["Active Aura Filters and Info"] = "啟用光環過濾以及訊息"
@@ -215,7 +215,7 @@ Off Screen]=] ] = [=[提醒效果
 	L["Cast by a Player Character"] = "施放透由玩家角色"
 	L["Categories to Update"] = "要更新的類別"
 	L["Changelog"] = "更新紀錄"
-	L["Chat with M33kAuras experts on our Discord server."] = "在我們的 Discord 伺服器和 M33kAuras 專家們聊天。"
+	L["Chat with MateAuras experts on our Discord server."] = "在我們的 Discord 伺服器和 MateAuras 專家們聊天。"
 	L["Check On..."] = "檢查..."
 	L["Check out our wiki for a large collection of examples and snippets."] = "看看我們的 wiki，有大量的範例和程式碼片段。"
 	L["Children:"] = "子項目:"
@@ -275,7 +275,7 @@ Off Screen]=] ] = [=[提醒效果
 |cFF4444FF例如:|r
 UNIT_POWER, UNIT_AURA PLAYER_TARGET_CHANGED]=]
 	L["Custom trigger status tooltip"] = [=[選擇自訂觸發要檢查的事件。
-因為這是狀態類型的觸發，所指定的事件必須不用加參數就能夠被 M33kAuras 呼叫。
+因為這是狀態類型的觸發，所指定的事件必須不用加參數就能夠被 MateAuras 呼叫。
 可用逗號分隔多個事件。
 
 |cFF4444FF例如:|r
@@ -680,7 +680,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件發�
 	L["Report bugs on our issue tracker."] = "請在我們的問題追蹤網頁回報 bug。"
 	L["Require unit from trigger"] = "需要來自觸發的單位"
 	L["Required for Activation"] = "啟用需要"
-	L["Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"] = "需要 LibSpecialization，也就是最新的 M33kAuras 版本"
+	L["Requires LibSpecialization, that is e.g. a up-to date MateAuras version"] = "需要 LibSpecialization，也就是最新的 MateAuras 版本"
 	L["Reset all options to their default values."] = "重置所有選項，恢復成預設值。"
 	L["Reset Entry"] = "重置項目"
 	L["Reset to Defaults"] = "重置為預設值"
@@ -818,7 +818,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = [=[事件發�
 	L["The Multi Target mode requires a name or spell id filter"] = "多目標模式需要名稱或法術ID過濾器"
 	L["The trigger number is optional. When no trigger number is specified, the trigger selected via dynamic information will be used."] = "觸發編號是可選的。當未指定觸發編號時，將使用透過動態資訊選擇的觸發。"
 	L["The type of trigger"] = "觸發類型"
-	L["The M33kAuras Options Addon version %s doesn't match the M33kAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling M33kAuras"] = "M33kAuras 選項插件版本 %s 與 M33kAuras 版本 %s 不符。如果您在遊戲運行時更新了插件，請嘗試重新啟動《魔獸世界》。否則嘗試重新安裝 M33kAuras"
+	L["The MateAuras Options Addon version %s doesn't match the MateAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling MateAuras"] = "MateAuras 選項插件版本 %s 與 MateAuras 版本 %s 不符。如果您在遊戲運行時更新了插件，請嘗試重新啟動《魔獸世界》。否則嘗試重新安裝 MateAuras"
 	L["Then "] = "(then) 則 "
 	L["There are several special codes available to make this text dynamic. Click to view a list with all dynamic text codes."] = "有幾個特殊的程式碼可以使該文字動態化。按一下可查看包含所有動態文字程式碼的清單。"
 	L["This adds %raidMark as text replacements."] = "這會加入 %raidMark 作為替換用的文字。"
@@ -830,9 +830,9 @@ Make sure you can trust the person who sent it!]=] ] = "這個提醒效果包含
 	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "此提醒效果被標記為更新 '%s'，但無法用於更新它們。這通常發生在將提醒效果移出群組時。"
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = "這個提醒效果是由不同版本 (%s) 的魔獸世界建立的，可能無法正常運作!"
-	L[ [=[This aura was created with a newer version of M33kAuras.
-Upgrade your version of M33kAuras or wait for next release before installing this aura.]=] ] = [=[這個提醒效果是用較新版本的 M33kAuras 建立的。
-安裝這個提醒效果之前，請先升級你的 M33kAuras 版本，或是等待下次發佈更新。]=]
+	L[ [=[This aura was created with a newer version of MateAuras.
+Upgrade your version of MateAuras or wait for next release before installing this aura.]=] ] = [=[這個提醒效果是用較新版本的 MateAuras 建立的。
+安裝這個提醒效果之前，請先升級你的 MateAuras 版本，或是等待下次發佈更新。]=]
 	L["This display is currently loaded"] = "這個提醒效果已經載入"
 	L["This display is not currently loaded"] = "這個提醒效果尚未載入"
 	L["This display is on standby, it will be loaded when needed."] = "此顯示已準備就緒，需要用到時會載入。"
@@ -904,8 +904,8 @@ Upgrade your version of M33kAuras or wait for next release before installing thi
 	L["View custom code"] = "檢視自訂程式碼"
 	L["Voice Settings"] = "聲音設定"
 	L["We thank"] = "我們感謝"
-	L["M33kAuras %s on WoW %s"] = "M33kAuras %s 在 WoW %s"
-	L["M33kAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "M33kAuras 建議使用法術ID而不是名稱。法術ID會自動本地化。"
+	L["MateAuras %s on WoW %s"] = "MateAuras %s 在 WoW %s"
+	L["MateAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "MateAuras 建議使用法術ID而不是名稱。法術ID會自動本地化。"
 	L["What do you want to do?"] = "你想要怎麼做?"
 	L["Whole Area"] = "整個區域"
 	L["wrapping"] = "自動換行"
@@ -926,13 +926,13 @@ Upgrade your version of M33kAuras or wait for next release before installing thi
 |cFFFF0000There is a risk the custom code could be used to kill your hardcore character!|r
 
 Would you like to continue?]=] ] = "你即將在專家伺服器上匯入一個包含自訂 Lua 程式碼的提醒效果。|cFFFF0000存在自訂程式碼可能被利用來殺死你的專家角色的風險!|r 你確定要繼續嗎?"
-	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
+	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
 
-M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "您可以在此處添加一個以逗號分隔的狀態值清單，當這些值發生變化時，M33kAuras 也會運行錨點程式碼 (Anchor Code)。如果您在此清單中包含 'changed'，或者新增、刪除或重新排序某個區塊時，M33kAuras 將會永遠運行自定錨點程式碼。"
-	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
+MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "您可以在此處添加一個以逗號分隔的狀態值清單，當這些值發生變化時，MateAuras 也會運行錨點程式碼 (Anchor Code)。如果您在此清單中包含 'changed'，或者新增、刪除或重新排序某個區塊時，MateAuras 將會永遠運行自定錨點程式碼。"
+	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
 
-M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "你可以在此處加入以逗號分隔的狀態值清單，(更改後) M33kAuras 也會執行 '增長程式碼'。如果你更改了這個清單，或是加入、刪除或重新排序時，M33kAuras 永遠都會執行自訂增長程式碼。"
-	L["You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "你可以在此處加入以逗號分隔的狀態值清單，(更改後) M33kAuras 也會執行 '排序程式碼'。如果你更改了這個清單，或是加入、刪除或重新排序時，M33kAuras 永遠都會執行自訂排序程式碼。"
+MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "你可以在此處加入以逗號分隔的狀態值清單，(更改後) MateAuras 也會執行 '增長程式碼'。如果你更改了這個清單，或是加入、刪除或重新排序時，MateAuras 永遠都會執行自訂增長程式碼。"
+	L["You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "你可以在此處加入以逗號分隔的狀態值清單，(更改後) MateAuras 也會執行 '排序程式碼'。如果你更改了這個清單，或是加入、刪除或重新排序時，MateAuras 永遠都會執行自訂排序程式碼。"
 	L["Your Saved Snippets"] = "已儲存的程式碼片段"
 	L["Z Offset"] = "Z軸位移"
 	L["Z Rotation"] = "Z軸旋轉"

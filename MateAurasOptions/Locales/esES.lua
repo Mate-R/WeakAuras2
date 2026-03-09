@@ -1,12 +1,12 @@
-if not M33kAuras.IsLibsOK() then return end
+if not MateAuras.IsLibsOK() then return end
 
 if (GAME_LOCALE or GetLocale()) ~= "esES" then
   return
 end
 
-local L = M33kAuras.L
+local L = MateAuras.L
 
--- M33kAuras/Options
+-- MateAuras/Options
 	L[" and |cFFFF0000mirrored|r"] = "y |cFFFF0000reflejado|r"
 	L["-- Do not remove this comment, it is part of this aura: "] = "-- No elimines este comentario, forma parte de esta aura:"
 	L[" rotated |cFFFF0000%s|r degrees"] = "rotado |cFFFF0000%s|r grados"
@@ -112,7 +112,7 @@ local L = M33kAuras.L
 	L["A 64x64 pixels icon"] = "Un icono de 64x64 píxeles"
 	L["A group that dynamically controls the positioning of its children"] = "Un grupo que controla dinámicamente la posición de sus hijos"
 	L[ [=[A timer will automatically be displayed according to default Interface Settings (overridden by some addons).
-Enable this setting if you want this timer to be hidden, or when using a M33kAuras text to display the timer]=] ] = "Un temporizador se mostrará automáticamente de acuerdo con la configuración predeterminada de la interfaz (anulada por algunos addons). Activa esta opción si quieres que el temporizador esté oculto, o cuando utilices un texto de M33kAuras para mostrar el temporizador."
+Enable this setting if you want this timer to be hidden, or when using a MateAuras text to display the timer]=] ] = "Un temporizador se mostrará automáticamente de acuerdo con la configuración predeterminada de la interfaz (anulada por algunos addons). Activa esta opción si quieres que el temporizador esté oculto, o cuando utilices un texto de MateAuras para mostrar el temporizador."
 	L["A Unit ID (e.g., party1)."] = "Una ID de unidad (ej., party1)."
 	L["Ace: Funkeh, Nevcairiel"] = "Ace: Funkeh, Nevcairiel"
 	L["Active Aura Filters and Info"] = "Información y filtros del aura activa"
@@ -215,7 +215,7 @@ Off Screen]=] ] = "El aura está fuera de la pantalla"
 	L["Cast by a Player Character"] = "Lanzado por un personaje de jugador"
 	L["Categories to Update"] = "Categorías a actualizar"
 	L["Changelog"] = "Registro de cambios"
-	L["Chat with M33kAuras experts on our Discord server."] = "Chatea con los expertos de M33kAuras en nuestro servidor Discord."
+	L["Chat with MateAuras experts on our Discord server."] = "Chatea con los expertos de MateAuras en nuestro servidor Discord."
 	L["Check On..."] = "Chequear..."
 	L["Check out our wiki for a large collection of examples and snippets."] = "Consulta nuestra wiki para ver una amplia colección de ejemplos y snippets."
 	L["Children:"] = "Hijo:"
@@ -659,7 +659,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = "Ocurrencia d
 	L["Report bugs on our issue tracker."] = "Informa de los errores en nuestro rastreador de problemas."
 	L["Require unit from trigger"] = "Requiere unidad del activador"
 	L["Required for Activation"] = "Necesario para la activación"
-	L["Requires LibSpecialization, that is e.g. a up-to date M33kAuras version"] = "Requiere LibSpecialization, es decir, una versión actualizada de M33kAuras."
+	L["Requires LibSpecialization, that is e.g. a up-to date MateAuras version"] = "Requiere LibSpecialization, es decir, una versión actualizada de MateAuras."
 	L["Reset all options to their default values."] = "Restablece todas las opciones a sus valores por defecto."
 	L["Reset Entry"] = "Restablecer entrada"
 	L["Reset to Defaults"] = "Restablecer valores"
@@ -800,7 +800,7 @@ every 3 events starting from 2nd and ending at 11th: 2-11/3]=] ] = "Ocurrencia d
 	L["The Multi Target mode requires a name or spell id filter"] = "The Multi Target mode requires a name or spell id filter"
 	L["The trigger number is optional. When no trigger number is specified, the trigger selected via dynamic information will be used."] = "El número de disparador es opcional. Cuando no se especifica un número de disparador, se usará el disparador seleccionado a través de información dinámica."
 	L["The type of trigger"] = "El tipo de activador"
-	L["The M33kAuras Options Addon version %s doesn't match the M33kAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling M33kAuras"] = "La versión del addon M33kAuras Options %s no coincide con la versión de M33kAuras %s. Si actualizaste el addon mientras el juego estaba en ejecución, intenta reiniciar World of Warcraft. De lo contrario, intenta reinstalar M33kAuras."
+	L["The MateAuras Options Addon version %s doesn't match the MateAuras version %s. If you updated the addon while the game was running, try restarting World of Warcraft. Otherwise try reinstalling MateAuras"] = "La versión del addon MateAuras Options %s no coincide con la versión de MateAuras %s. Si actualizaste el addon mientras el juego estaba en ejecución, intenta reiniciar World of Warcraft. De lo contrario, intenta reinstalar MateAuras."
 	L["Then "] = "Entonces"
 	L["There are several special codes available to make this text dynamic. Click to view a list with all dynamic text codes."] = "Hay varios códigos especiales disponibles para hacer que este texto sea dinámico. Haz clic para ver una lista con todos los códigos de texto dinámico."
 	L["This adds %raidMark as text replacements."] = "Esto agrega %raidMark como reemplazos de texto."
@@ -812,8 +812,8 @@ Make sure you can trust the person who sent it!]=] ] = "Esta aura contiene un c�
 	L["This aura is marked as an update to auras '%s', but cannot be used to update them. This usually happens if an aura is moved out of a group."] = "Esta aura está marcada como una actualización de una aura '%s', pero no se puede usar para actualizar esa aura. Esto suele suceder si se saca una aura de un grupo."
 	L[ [=[This aura was created with a different version (%s) of World of Warcraft.
 It might not work correctly!]=] ] = "Esta aura fue creada con una versión diferente (%s) de World of Warcraft. ¡Puede que no funcione correctamente!"
-	L[ [=[This aura was created with a newer version of M33kAuras.
-Upgrade your version of M33kAuras or wait for next release before installing this aura.]=] ] = "Esta aura fue creada con una versión más nueva de M33kAuras. Actualiza tu versión de M33kAuras o espera la próxima versión antes de instalar esta aura."
+	L[ [=[This aura was created with a newer version of MateAuras.
+Upgrade your version of MateAuras or wait for next release before installing this aura.]=] ] = "Esta aura fue creada con una versión más nueva de MateAuras. Actualiza tu versión de MateAuras o espera la próxima versión antes de instalar esta aura."
 	L["This display is currently loaded"] = "Esta visualización está actualmente cargada."
 	L["This display is not currently loaded"] = "Esta visualización no está actualmente cargada."
 	L["This display is on standby, it will be loaded when needed."] = "Esta visualización está en espera, se cargará cuando sea necesario."
@@ -886,8 +886,8 @@ Upgrade your version of M33kAuras or wait for next release before installing thi
 	L["View custom code"] = "Ver código personalizado"
 	L["Voice Settings"] = "Configuración de voz"
 	L["We thank"] = "Agradecemos a"
-	L["M33kAuras %s on WoW %s"] = "M33kAuras %s en WoW %s"
-	L["M33kAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "M33kAuras recomienda usar IDs de hechizos en lugar de nombres. Los IDs de hechizos se localizan automáticamente."
+	L["MateAuras %s on WoW %s"] = "MateAuras %s en WoW %s"
+	L["MateAuras recommends using spell ids instead of names. Spell ids are automatically localized."] = "MateAuras recomienda usar IDs de hechizos en lugar de nombres. Los IDs de hechizos se localizan automáticamente."
 	L["What do you want to do?"] = "¿Qué es lo que quieres hacer?"
 	L["Whole Area"] = "Área completa"
 	L["wrapping"] = "envolviendo"
@@ -908,13 +908,13 @@ Upgrade your version of M33kAuras or wait for next release before installing thi
 |cFFFF0000There is a risk the custom code could be used to kill your hardcore character!|r
 
 Would you like to continue?]=] ] = "Estás a punto de importar un aura con código Lua personalizado en un servidor Hardcore. |cFFFF0000¡Existe el riesgo de que el código personalizado pueda usarse para matar a tu personaje hardcore!|r ¿Deseas continuar?"
-	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Anchor Code on.
+	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Anchor Code on.
 
-M33kAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) M33kAuras también debería ejecutar el código anclaje. M33kAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega, se elimina, o se reordena una región"
-	L[ [=[You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the Grow Code on.
+MateAuras will always run custom anchor code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) MateAuras también debería ejecutar el código anclaje. MateAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega, se elimina, o se reordena una región"
+	L[ [=[You can add a comma-separated list of state values here that (when changed) MateAuras should also run the Grow Code on.
 
-M33kAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) M33kAuras también debería ejecutar el código crecimiento. M33kAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega, se elimina, o se reordena una región"
-	L["You can add a comma-separated list of state values here that (when changed) M33kAuras should also run the sort code on.M33kAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) M33kAuras también debería ejecutar el código de orden. M33kAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega o se elimina una región"
+MateAuras will always run custom grow code if you include 'changed' in this list, or when a region is added, removed, or re-ordered.]=] ] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) MateAuras también debería ejecutar el código crecimiento. MateAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega, se elimina, o se reordena una región"
+	L["You can add a comma-separated list of state values here that (when changed) MateAuras should also run the sort code on.MateAuras will always run custom sort code if you include 'changed' in this list, or when a region is added, removed."] = "Puedes agregar aquí una lista de valores de estado separados por comas en los que (cuando se modifican) MateAuras también debería ejecutar el código de orden. MateAuras siempre ejecutará el código de orden personalizado si incluye \"cambiado\" en esta lista, o cuando se agrega o se elimina una región"
 	L["Your Saved Snippets"] = "Tus snippets guardados"
 	L["Z Offset"] = "Desplazamiento Z"
 	L["Z Rotation"] = "Rotación Z"
