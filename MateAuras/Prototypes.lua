@@ -4243,7 +4243,7 @@ Private.event_prototypes = {
         local name, _, icon = Private.ExecEnv.GetSpellInfo(effectiveSpellId)
         local startTime, duration, gcdCooldown, readyTime, modRate, paused = MateAuras.GetSpellCooldown(effectiveSpellId, ignoreRuneCD, showgcd, ignoreSpellKnown, track)
         local charges, maxCharges, spellCount, chargeGainTime, chargeLostTime = MateAuras.GetSpellCharges(effectiveSpellId, ignoreSpellKnown)
-        local isSecret = C_Secrets.ShouldSpellCooldownBeSecret(effectiveSpellId) or issecretvalue(maxCharges)
+        local isSecret = C_Secrets.ShouldSpellCooldownBeSecret(effectiveSpellId) or issecretvalue(maxCharges) or issecretvalue(spellCount)
         local stacks
         if isSecret then
           stacks = C_Spell.GetSpellDisplayCount(effectiveSpellId)
