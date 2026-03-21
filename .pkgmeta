@@ -27,6 +27,7 @@ externals:
   MateAuras/Libs/TaintLess:
     url: https://www.townlong-yak.com/addons.git/taintless
     commit: default
+  MateAuras/Libs/LibAdvFlyable-1.1: https://github.com/Ghostopheles/LibAdvFlight
   MateAurasOptions/Libs/AceConfig-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceConfig-3.0
   MateAurasOptions/Libs/AceGUI-3.0: https://repos.curseforge.com/wow/ace3/trunk/AceGUI-3.0
   MateAurasOptions/Libs/AceGUI-3.0-SharedMediaWidgets: https://repos.curseforge.com/wow/ace-gui-3-0-shared-media-widgets/trunk/AceGUI-3.0-SharedMediaWidgets
