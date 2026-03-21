@@ -233,6 +233,8 @@ function Private.Animate(namespace, uid, type, anim, region, inverse, onFinished
       anim.scalex = anim.scalex or 1;
       anim.scaley = anim.scaley or 1;
       startWidth, startHeight = region:GetWidth(), region:GetHeight();
+      if issecretvalue(startWidth) then startWidth = region.width or 0 end
+      if issecretvalue(startHeight) then startHeight = region.height or 0 end
       anim.rotate = anim.rotate or 0;
       anim.colorR = anim.colorR or 1;
       anim.colorG = anim.colorG or 1;

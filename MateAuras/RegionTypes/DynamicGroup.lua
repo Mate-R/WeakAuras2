@@ -1124,8 +1124,9 @@ local function modify(parent, region, data)
   local function createRegionData(childData, childRegion, childID, cloneID, dataIndex)
     cloneID = cloneID or ""
     local controlPoint = region.controlPoints:Acquire()
-    controlPoint:SetWidth(childRegion:GetWidth())
-    controlPoint:SetHeight(childRegion:GetHeight())
+    local w, h = childRegion:GetWidth(), childRegion:GetHeight()
+    if not issecretvalue(w) then controlPoint:SetWidth(w) end
+    if not issecretvalue(h) then controlPoint:SetHeight(h) end
     local regionData = {
       data = childData,
       region = childRegion,
