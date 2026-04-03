@@ -3108,13 +3108,16 @@ do
 
   ---@type fun(id): durationObject:userdata
   function MateAuras.GetSpellCooldownDuration(id)
-    local charge = C_Spell.GetSpellChargeDuration(id)
     local cdInfo = C_Spell.GetSpellCooldown(id)
-    local cooldown
-    if cdInfo then
-      cooldown = C_Spell.GetSpellCooldownDuration(id)
+    local chargesInfo = C_Spell.GetSpellCharges(id)
+
+    if cdInfo and cdInfo.isActive then
+      return C_Spell.GetSpellCooldownDuration(id)
+    elseif chargesInfo and chargesInfo.isActive then
+      return C_Spell.GetSpellChargeDuration(id)
+    else
+      return cdInfo and C_Spell.GetSpellCooldownDuration(id) or C_Spell.GetSpellChargeDuration(id)
     end
-    return charge or cooldown
   end
 
   function MateAuras.IsSpellReadyFromDuration(id)
@@ -3758,13 +3761,15 @@ function Private.WatchStagger()
             staggerWatchFrame:SetScript("OnUpdate", function()
               Private.StartProfileSystem("stagger")
               local stagger = UnitStagger("player")
-              if not issecretvalue(stagger) and stagger ~= staggerWatchFrame.stagger then
-                staggerWatchFrame.stagger = stagger
-                Private.ScanEvents("WA_UNIT_STAGGER_CHANGED", "player", stagger)
-              end
-              if stagger == 0 then
-                staggerWatchFrame:SetScript("OnUpdate", nil)
-                staggerWatchFrame.onupdate = nil
+              if not issecretvalue(stagger) then
+                if stagger ~= staggerWatchFrame.stagger then
+                  staggerWatchFrame.stagger = stagger
+                  Private.ScanEvents("WA_UNIT_STAGGER_CHANGED", "player", stagger)
+                end
+                if stagger == 0 then
+                  staggerWatchFrame:SetScript("OnUpdate", nil)
+                  staggerWatchFrame.onupdate = nil
+                end
               end
               Private.StopProfileSystem("stagger")
             end)

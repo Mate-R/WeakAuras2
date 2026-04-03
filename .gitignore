@@ -3,6 +3,7 @@ MateAuras_Main.lua
 MateAuras_Options.lua
 MateAuras_Templates.lua
 MateAuras/Libs/*
+!MateAuras/Libs/LibGetFrame-1.0
 MateAurasOptions/Libs/*
 format.bat
 **/desktop.ini

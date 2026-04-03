@@ -15,7 +15,6 @@ externals:
   MateAuras/Libs/LibRangeCheck-3.0: https://github.com/WeakAuras/LibRangeCheck-3.0/
   MateAuras/Libs/LibCustomGlow-1.0: https://github.com/Stanzilla/LibCustomGlow
   MateAuras/Libs/LibDBIcon-1.0: https://repos.curseforge.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
-  MateAuras/Libs/LibGetFrame-1.0: https://github.com/mrbuds/LibGetFrame
   MateAuras/Libs/Archivist:
     url: https://github.com/emptyrivers/Archivist
     tag: v1.0.8
