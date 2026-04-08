@@ -121,7 +121,7 @@ function OptionsPrivate.CreateFrame()
   frame:SetResizeBounds(minWidth, minHeight)
   frame:SetFrameStrata("DIALOG")
   -- Workaround classic issue
-  MateAurasOptionsPortrait:SetTexture([[Interface\AddOns\MateAuras\Media\Textures\mt_256_blend.tga]])
+  MateAurasOptionsPortrait:SetTexture([[Interface\AddOns\MateAuras\Media\Textures\logo_256_round_mt.tga]])
 
   frame.window = "default"
 
