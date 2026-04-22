@@ -1676,6 +1676,9 @@ function GenericTrigger.Add(data, region)
 
             prototype = event_prototypes[trigger.event]
             triggerFuncStr = ConstructFunction(prototype, trigger);
+            if id == "Moovespeed Tracker" then
+              print("TriggerFuncStr", triggerFuncStr)
+            end
             statesParameter = prototype.statesParameter;
             triggerFunc = Private.LoadFunction(triggerFuncStr, id);
 
@@ -2714,7 +2717,7 @@ do
       local power = UnitPower("player", EssenceEnum)
       local total = UnitPowerMax("player", EssenceEnum)
       local peace = GetPowerRegenForPowerType(EssenceEnum)
-      if peace == nil or peace == 0 then
+      if peace == nil or peace == 0 or issecretvalue(peace) then
         peace = 0.2
       end
       local duration = 1 / peace
@@ -4221,7 +4224,7 @@ do
     end
 
     local speed = GetUnitSpeed("player")
-    if playerMovingFrame.speed ~= speed then
+    if hasanysecretvalues(playerMovingFrame.speed, speed) or playerMovingFrame.speed ~= speed then
       playerMovingFrame.speed = speed
       Private.ScanEvents("PLAYER_MOVE_SPEED_UPDATE")
     end
@@ -5098,6 +5101,9 @@ end
 ---@return integer critChance
 MateAuras.GetCritChance = function()
   -- Based on what the wow paper doll does
+  if C_Secrets.ShouldUnitStatsBeSecret() then
+    return 0
+  end
   local spellCrit = 0
   for i = 2, MAX_SPELL_SCHOOLS or 7 do -- WORKAROUND: MAX_SPELL_SCHOOLS is nil on classic_era
     spellCrit = max(spellCrit, GetSpellCritChance(i))
@@ -5107,6 +5113,9 @@ end
 
 ---@return number hitChance
 MateAuras.GetHitChance = function()
+  if C_Secrets.ShouldUnitStatsBeSecret() then
+    return 0
+  end
   local melee = (GetCombatRatingBonus(CR_HIT_MELEE) or 0) + (GetHitModifier() or 0)
   local ranged = (GetCombatRatingBonus(CR_HIT_RANGED) or 0) + (GetHitModifier() or 0)
   local spell = (GetCombatRatingBonus(CR_HIT_SPELL) or 0) + (GetSpellHitModifier() or 0)

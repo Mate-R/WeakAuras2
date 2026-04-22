@@ -84,7 +84,7 @@ if CustomNames then
   MateAuras.UnitFullName = CustomNames.UnitFullName
 else
   MateAuras.GetName = function(name) return name end
-  MateAuras.UnitName = UnitName
+  MateAuras.UnitName = Private.ExecEnv.UnitName
   MateAuras.GetUnitName = GetUnitName
   MateAuras.UnitFullName = UnitFullName
 end
@@ -3727,18 +3727,6 @@ local function actionGlowStart(actions, frame, id)
       duration = actions.glow_duration or 1,
       key = id
   })
-  end
-end
-
-function Private.ExecEnv.UnitIsUnit(unit1, unit2)
-  if hasanysecretvalues(unit1, unit2) then
-    return false
-  end
-  local res = UnitIsUnit(unit1, unit2)
-  if issecretvalue(res) then
-    return false
-  else
-    return res
   end
 end
 
