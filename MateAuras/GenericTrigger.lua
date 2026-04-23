@@ -1676,9 +1676,6 @@ function GenericTrigger.Add(data, region)
 
             prototype = event_prototypes[trigger.event]
             triggerFuncStr = ConstructFunction(prototype, trigger);
-            if id == "Moovespeed Tracker" then
-              print("TriggerFuncStr", triggerFuncStr)
-            end
             statesParameter = prototype.statesParameter;
             triggerFunc = Private.LoadFunction(triggerFuncStr, id);
 
@@ -2717,7 +2714,7 @@ do
       local power = UnitPower("player", EssenceEnum)
       local total = UnitPowerMax("player", EssenceEnum)
       local peace = GetPowerRegenForPowerType(EssenceEnum)
-      if peace == nil or peace == 0 or issecretvalue(peace) then
+      if peace == nil or issecretvalue(peace) or peace == 0 then
         peace = 0.2
       end
       local duration = 1 / peace
