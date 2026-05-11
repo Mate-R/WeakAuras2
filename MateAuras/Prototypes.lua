@@ -2078,6 +2078,17 @@ Private.load_prototype = {
       optional = true,
     },
     {
+      name = "enabledBossModID",
+      display = L["Enabled BossMod ID(BW Only)"],
+      type = "string",
+      multiline = true,
+      desc = Private.get_encounters_list,
+      preamble = "local bossModChecker = Private.ExecEnv.ParseBossModCheck(%q)",
+      test = "bossModChecker:Check()",
+      events = {"WA_BOSSMOD_ENABLED_STATE_CHANGED"},
+      optional = true,
+    },
+    {
       name = "size",
       display = L["Instance Size Type"],
       type = "multiselect",
@@ -4257,6 +4268,7 @@ Private.event_prototypes = {
           stacks = maxCharges and maxCharges ~= 1 and charges or (spellCount and spellCount > 0 and spellCount) or nil;
         end
         local durationObject = MateAuras.GetSpellCooldownDuration(effectiveSpellId)
+        local durationObjectNoGCD = MateAuras.GetSpellCooldownDurationNoGCD(effectiveSpellId)
         local isReady = MateAuras.IsSpellReady(effectiveSpellId)
         if showlossofcontrol and startTime and duration then
           local locStart, locDuration = MateAuras.GetSpellLossOfControlCooldown(spellname);
@@ -4316,7 +4328,7 @@ Private.event_prototypes = {
             state.modRate = modRate;
             state.changed = true;
           end
-          state.durationObject = durationObject;
+          state.durationObject = showgcd and durationObject or durationObjectNoGCD;
           if isSecret then
             state.changed = true;
             state.progressType = 'durationObject';

@@ -3111,17 +3111,32 @@ do
     local cdInfo = C_Spell.GetSpellCooldown(id)
     local chargesInfo = C_Spell.GetSpellCharges(id)
 
-    if cdInfo and cdInfo.isActive then
-      return C_Spell.GetSpellCooldownDuration(id)
-    elseif chargesInfo and chargesInfo.isActive then
+    if chargesInfo and chargesInfo.isActive then
       return C_Spell.GetSpellChargeDuration(id)
+    elseif cdInfo and cdInfo.isActive then
+      return C_Spell.GetSpellCooldownDuration(id)
     else
       return cdInfo and C_Spell.GetSpellCooldownDuration(id) or C_Spell.GetSpellChargeDuration(id)
     end
   end
 
+  -- for cooldown progress display without the gcd e.g. in overlays
+  ---@type fun(id): durationObject:userdata
+  function MateAuras.GetSpellCooldownDurationNoGCD(id)
+    local cdInfo = C_Spell.GetSpellCooldown(id)
+    local chargesInfo = C_Spell.GetSpellCharges(id)
+
+    if cdInfo and cdInfo.isActive then
+      return C_Spell.GetSpellCooldownDuration(id, true)
+    elseif chargesInfo and chargesInfo.isActive then
+      return C_Spell.GetSpellChargeDuration(id, true)
+    else
+      return cdInfo and C_Spell.GetSpellCooldownDuration(id, true) or C_Spell.GetSpellChargeDuration(id, true)
+    end
+  end
+
   function MateAuras.IsSpellReadyFromDuration(id)
-    local durationObj = C_Spell.GetSpellCooldownDuration(id)
+    local durationObj = C_Spell.GetSpellCooldownDuration(id, true)
     if not durationObj then
       return nil
     end
@@ -4301,6 +4316,7 @@ end
 if MateAuras.IsCataOrMistsOrRetail() then
   Private.LibSpecWrapper.Register(function(unit)
     Private.ScanEvents("UNIT_SPEC_CHANGED_" .. unit, unit)
+    MateAuras.ScanEvents("UNIT_SPEC_CHANGED", unit)
   end)
 end
 
