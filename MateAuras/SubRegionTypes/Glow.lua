@@ -4,7 +4,7 @@ local AddonName = ...
 ---@class Private
 local Private = select(2, ...)
 
-local LCG = LibStub("LibCustomGlow-1.0")
+local LCG = LibStub("LibCustomGlow-1.0-mateauras")
 
 local MSQ = LibStub("Masque", true)
 local L = MateAuras.L

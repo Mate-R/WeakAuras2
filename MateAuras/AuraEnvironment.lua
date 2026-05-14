@@ -165,7 +165,7 @@ MateAuras.PadString = function(input, padMode, padLength)
   return input
 end
 
-local LCG = LibStub("LibCustomGlow-1.0")
+local LCG = LibStub("LibCustomGlow-1.0-mateauras")
 MateAuras.ShowOverlayGlow = LCG.ButtonGlow_Start
 MateAuras.HideOverlayGlow = LCG.ButtonGlow_Stop
 

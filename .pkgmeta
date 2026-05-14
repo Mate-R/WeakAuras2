@@ -13,7 +13,6 @@ externals:
   MateAuras/Libs/LibDeflate: https://github.com/SafeteeWoW/LibDeflate
   MateAuras/Libs/LibSpellRange-1.0: https://github.com/ascott18/LibSpellRange-1.0
   MateAuras/Libs/LibRangeCheck-3.0: https://github.com/WeakAuras/LibRangeCheck-3.0/
-  MateAuras/Libs/LibCustomGlow-1.0: https://github.com/Stanzilla/LibCustomGlow
   MateAuras/Libs/LibDBIcon-1.0: https://repos.curseforge.com/wow/libdbicon-1-0/trunk/LibDBIcon-1.0
   MateAuras/Libs/Archivist:
     url: https://github.com/emptyrivers/Archivist

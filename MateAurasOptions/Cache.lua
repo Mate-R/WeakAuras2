@@ -31,6 +31,10 @@ function spellCache.Build()
     return
   end
 
+  if IsTestBuild() then -- disable for 12.0.7
+    return
+  end
+
   local holes
   if MateAuras.IsClassicEra() then
     holes = {}
