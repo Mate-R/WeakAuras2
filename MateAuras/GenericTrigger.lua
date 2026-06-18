@@ -3222,6 +3222,10 @@ do
   ---@type fun()
   function Private.CheckItemSlotCooldowns()
     for id, itemId in pairs(itemSlots) do
+      if itemId == true then
+        itemId = GetInventoryItemID("player", id);
+        itemSlots[id] = itemId or true;
+      end
       local startTime, duration, enable = GetInventoryItemCooldown("player", id);
       itemSlotsEnable[id] = enable;
       startTime = startTime or 0;
@@ -3404,7 +3408,7 @@ do
     if not id or id == 0 then return end
 
     if not(itemSlots[id]) then
-      itemSlots[id] = GetInventoryItemID("player", id);
+      itemSlots[id] = GetInventoryItemID("player", id) or true;
       local startTime, duration, enable = GetInventoryItemCooldown("player", id);
       itemSlotsEnable[id] = enable;
       if(duration > 0 and duration > 1.5 and duration ~= MateAuras.gcdDuration()) then

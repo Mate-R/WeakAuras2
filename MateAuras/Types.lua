@@ -3219,6 +3219,7 @@ if not MateAuras.IsClassicEra() then
     [230] = unused, -- heroic party
     [231] = unused, -- normal raid dungeon
     [232] = unused, -- event party
+    [233] = L["Raid (Mythic Flex)"],
     [236] = L["Lorewalking"],
     [237] = MateAuras.IsMists() and L["Dungeon (Celestial)"] or unused,
   }
@@ -4340,6 +4341,10 @@ Private.difficulty_info = {
     size = "twenty",
     difficulty = "normal",
   },
+  [233] = {
+    size = "flexible",
+    difficulty = "mythic",
+  }
 }
 
 Private.glow_types = {

@@ -1,4 +1,4 @@
-## Interface: 110205, 120000
+## Interface: 120007
 ## Title: MateAuras Archive
 ## Author: Mate-R
 ## Version: @project-version@
