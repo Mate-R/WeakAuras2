@@ -413,6 +413,35 @@ function Private.ActivateAuraEnvironment(id, cloneId, state, states, onlyConfig)
   end
 end
 
+EventRegistry:RegisterCallback("SetItemRef", function(_, link, text, button, chatFrame)
+  local linkType, addonName, waID, uid = strsplit(":", link)
+  if linkType == "addon" and addonName == "MatekAuras" then
+    if button == "RightButton" then
+      if (not Private.LoadOptions() or not MateAuras.IsOptionsOpen()) then
+        MateAuras.ToggleOptions(nil, Private)
+        C_Timer.After(1, function() MateAuras.PickDisplay(waID) end)
+      else
+        MateAuras.PickDisplay(waID)
+      end
+    else
+      print("WA에서 출력:", [["]]..waID..[["]], "|n|cff999999(위 링크를 마우스 오른쪽 클릭하여 설정 페이지에서 열기)|r")
+    end
+  end
+end)
+
+local function getHyperlinkForPrint()
+  local id, uid = current_aura_env.id, current_uid
+  if id then
+    return string.format("|Haddon:MateAuras:%s:%s|h|cff666666[WA]|r|h", id, uid)
+  else
+    return "알 수 없는 오라"
+  end
+end
+
+local function printID(...)
+  print(getHyperlinkForPrint(), ...)
+end
+
 local function DebugPrint(...)
   Private.DebugLog.Print(current_uid, ...)
 end
@@ -587,6 +616,8 @@ local exec_env_custom = setmetatable(CopyTable(mixins),
       return current_aura_env and Private.AuraEnvironmentWrappedSystem.Get("C_Timer",
                                       current_aura_env.id, current_aura_env.cloneId)
                               or C_Timer
+    elseif k == "print" then
+     return current_aura_env and printID or print
     elseif blockedFunctions[k] then
       blocked(k)
       return function(_) end
