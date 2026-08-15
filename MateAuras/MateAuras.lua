@@ -185,6 +185,7 @@ function Private.PrintHelp()
   print(L["/wa pstop - Finish profiling"])
   print(L["/wa pprint - Show the results from the most recent profiling"])
   print(L["/wa repair - Repair tool"])
+  print(L["/wa trackprint - Toggle the display of a hyperlink in the chat frame when an aura prints a message."])
   print(L["If you require additional assistance, please open a ticket on GitHub or visit our Discord at https://discord.gg/MateAuras!"])
 end
 
@@ -216,6 +217,9 @@ function SlashCmdList.MateAuras(input)
     Private.PrintHelp();
   elseif msg == "repair" then
     StaticPopup_Show("MateAuras_CONFIRM_REPAIR", nil, nil, {reason = "user"})
+  elseif msg == "trackprint" then
+    Private.db.disableTrackPrints = not Private.db.disableTrackPrints
+    prettyPrint(L["Print tracking is now %s"]:format(Private.db.disableTrackPrints and L["disabled"] or L["enabled"]))
   elseif msg == "ff" or msg == "feat" or msg == "feature" then
     if #args < 2 then
       local features = Private.Features:ListFeatures()
@@ -1356,7 +1360,9 @@ function Private.Login(takeNewSnapshots)
       GREMINDER:FireCallback("WEAKAURAS_LOGIN_COMPLETE")
     end
   end)
-  thread:ForceRun(12000)
+  if not db.deferLogin then
+    thread:ForceRun(12000)
+  end
 end
 
 local MateAurasFrame = CreateFrame("Frame", "MateAurasFrame", UIParent);

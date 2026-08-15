@@ -1,4 +1,4 @@
-## Interface: 110205, 120000
+## Interface: 120100
 ## Title: MateAuras Model Paths (MT fork)
 ## Author: Mate-R
 ## Version: @project-version@

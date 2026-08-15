@@ -424,7 +424,7 @@ EventRegistry:RegisterCallback("SetItemRef", function(_, link, text, button, cha
         MateAuras.PickDisplay(waID)
       end
     else
-      print("WA에서 출력:", [["]]..waID..[["]], "|n|cff999999(위 링크를 마우스 오른쪽 클릭하여 설정 페이지에서 열기)|r")
+      print("WA에서 출력:", [["]]..waID..[["]], "|n|cff999999(위 링크를 마우스 오른쪽 클릭하여 설정 페이지에서 열리며, /wa trackprint 명령어를 입력하면 하이퍼링크 표시를 전환할 수 있습니다)|r")
     end
   end
 end)
@@ -617,7 +617,7 @@ local exec_env_custom = setmetatable(CopyTable(mixins),
                                       current_aura_env.id, current_aura_env.cloneId)
                               or C_Timer
     elseif k == "print" then
-     return current_aura_env and printID or print
+     return current_aura_env and not Private.db.disableTrackPrints and printID or print
     elseif blockedFunctions[k] then
       blocked(k)
       return function(_) end
