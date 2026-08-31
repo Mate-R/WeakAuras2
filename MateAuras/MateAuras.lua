@@ -309,11 +309,19 @@ local loadEvents = {}
 -- All regions keyed on id, has properties: region, regionType, also see clones
 Private.regions = {};
 
--- keyed on id, contains bool indicating whether the aura is loaded
+-- Current load evaluation keyed by id. Options may update this while runtime is paused.
 Private.loaded = {};
 local loaded = Private.loaded;
--- Snapshot of the load state when pausing, before options changes can update loaded.
-local loadedBeforePause = {};
+-- Displays whose runtime lifecycle is active and therefore still requires an unload.
+local runtimeActiveDisplays = {}
+-- Aura environments for which the custom onLoad lifecycle has started.
+local runtimeActiveAuraEnvironments = {}
+-- Delay onLoad until all trigger systems have finished loading a display.
+local loadingDisplays = {}
+-- Delay onLoad until a rebuilt display has evaluated its new load conditions.
+local rebuildingDisplays = {}
+-- Prevent re-entrant code from loading displays while Resume tears active lifecycles down.
+local unloadingAllDisplays = false
 
 -- contains regions for clones
 Private.clones = {};
@@ -1505,13 +1513,6 @@ function MateAuras.IsPaused()
 end
 
 function Private.Pause()
-  if not paused then
-    wipe(loadedBeforePause)
-    for id, isLoaded in pairs(loaded) do
-      loadedBeforePause[id] = isLoaded
-    end
-  end
-
   for id, states in pairs(triggerState) do
     local changed
     for triggernum in ipairs(states) do
@@ -1671,7 +1672,7 @@ end
 local toLoad = {}
 local toUnload = {};
 local function scanForLoadsImpl(toCheck, event, arg1, ...)
-  if (Private.IsOptionsProcessingPaused()) then
+  if Private.IsOptionsProcessingPaused() or unloadingAllDisplays then
     return;
   end
 
@@ -1833,7 +1834,7 @@ local function scanForLoadsImpl(toCheck, event, arg1, ...)
         end
       end
 
-      if(loaded[id] and not shouldBeLoaded) then
+      if((loaded[id] or runtimeActiveDisplays[id]) and not shouldBeLoaded) then
         toUnload[id] = true;
         changed = changed + 1;
         for parent in Private.TraverseParents(data) do
@@ -2004,9 +2005,55 @@ function Private.RegisterLoadEvents()
   end);
 end
 
+local function HasCustomEnvironmentLifecycle(id)
+  local functions = Private.customActionsFunctions[id]
+  return functions and (functions["load"] or functions["unload"])
+end
+
+function Private.ActivateAuraEnvironmentLifecycle(id)
+  if unloadingAllDisplays or loadingDisplays[id] or rebuildingDisplays[id]
+     or not runtimeActiveDisplays[id] or runtimeActiveAuraEnvironments[id]
+     or not HasCustomEnvironmentLifecycle(id)
+  then
+    return
+  end
+
+  runtimeActiveAuraEnvironments[id] = true
+  local func = Private.customActionsFunctions[id]["load"]
+  if func then
+    xpcall(func, Private.GetErrorHandlerId(id, "onLoad"))
+  end
+end
+
+function Private.DeactivateAuraEnvironmentLifecycle(id)
+  if not runtimeActiveAuraEnvironments[id] then
+    return
+  end
+
+  runtimeActiveAuraEnvironments[id] = nil
+  local func = Private.customActionsFunctions[id] and Private.customActionsFunctions[id]["unload"]
+  if func then
+    Private.ActivateAuraEnvironment(id)
+    xpcall(func, Private.GetErrorHandlerId(id, "onUnload"))
+    Private.ActivateAuraEnvironment(nil)
+  end
+end
+
+local function EnsureAuraEnvironmentLifecycle(id)
+  if unloadingAllDisplays or rebuildingDisplays[id] or not runtimeActiveDisplays[id]
+     or runtimeActiveAuraEnvironments[id] or not HasCustomEnvironmentLifecycle(id)
+  then
+    return
+  end
+
+  Private.ActivateAuraEnvironment(id)
+  Private.ActivateAuraEnvironmentLifecycle(id)
+  Private.ActivateAuraEnvironment(nil)
+end
+
 local function UnloadAll()
   -- Even though auras are collapsed, their finish animation can be running
-  for id in pairs(loaded) do
+  for id in pairs(runtimeActiveDisplays) do
     if Private.regions[id] and Private.regions[id].region then
       Private.CancelAnimation(Private.regions[id].region, true, true, true, true, true, true)
     end
@@ -2042,19 +2089,11 @@ local function UnloadAll()
     triggerSystem.UnloadAll();
   end
 
-  for id in pairs(loadedBeforePause) do
-    local func = Private.customActionsFunctions[id] and Private.customActionsFunctions[id]["unload"]
-    if func then
-      Private.ActivateAuraEnvironment(id)
-      xpcall(func, Private.GetErrorHandlerId(id, "onUnload"))
-      Private.ActivateAuraEnvironment(nil)
-    end
-  end
-  wipe(loadedBeforePause)
   wipe(loaded);
 end
 
 function Private.Resume()
+  unloadingAllDisplays = true
   paused = false;
 
   local suspended = Private.PauseAllDynamicGroups()
@@ -2073,6 +2112,7 @@ function Private.Resume()
 
 
   UnloadAll();
+  unloadingAllDisplays = false
   scanForLoadsImpl();
   if loadEvents["GROUP"] then
     Private.ScanForLoadsGroup(loadEvents["GROUP"])
@@ -2083,6 +2123,8 @@ end
 
 function Private.LoadDisplays(toLoad, ...)
   for id in pairs(toLoad) do
+    loadingDisplays[id] = true
+    runtimeActiveDisplays[id] = true
     local uid = MateAuras.GetData(id).uid
     Private.RegisterForGlobalConditions(uid);
     triggerState[id].triggers = {};
@@ -2099,22 +2141,18 @@ function Private.LoadDisplays(toLoad, ...)
     triggerSystem.LoadDisplays(toLoad, ...);
   end
   for id in pairs(toLoad) do
-    local func = Private.customActionsFunctions[id] and Private.customActionsFunctions[id]["load"]
-    if func then
-      Private.ActivateAuraEnvironment(id)
-      xpcall(func, Private.GetErrorHandlerId(id, "onLoad"))
-      Private.ActivateAuraEnvironment(nil)
-    end
+    loadingDisplays[id] = nil
+    EnsureAuraEnvironmentLifecycle(id)
   end
 end
 
 function Private.UnloadDisplays(toUnload, ...)
   for id in pairs(toUnload) do
-    local func = Private.customActionsFunctions[id] and Private.customActionsFunctions[id]["unload"]
-    if func then
-      Private.ActivateAuraEnvironment(id)
-      xpcall(func, Private.GetErrorHandlerId(id, "onUnload"))
-      Private.ActivateAuraEnvironment(nil)
+    local wasActive = runtimeActiveDisplays[id]
+    runtimeActiveDisplays[id] = nil
+
+    if wasActive then
+      Private.DeactivateAuraEnvironmentLifecycle(id)
     end
   end
   for _, triggerSystem in pairs(triggerSystems) do
@@ -2164,6 +2202,14 @@ function Private.FinishLoadUnload()
   end
 end
 
+local function UnloadDisplayIfLoaded(id)
+  loaded[id] = nil
+
+  if runtimeActiveDisplays[id] then
+    Private.UnloadDisplays({[id] = true})
+  end
+end
+
 -- transient cache of uid => id
 -- eventually, the database will be migrated to index by uid
 -- and this mapping will become redundant
@@ -2187,9 +2233,7 @@ function MateAuras.Delete(data)
   local parentUid = data.parent and db.displays[data.parent].uid
 
 
-  if loaded[id] then
-    Private.UnloadDisplays({[id] = true})
-  end
+  UnloadDisplayIfLoaded(id)
 
   Private.callbacks:Fire("AboutToDelete", uid, id, parentUid, parentId)
 
@@ -2282,6 +2326,8 @@ end
 function MateAuras.Rename(data, newid)
   -- since we Add() later in this function, we need to destroy the universe first
   local oldid = data.id
+  UnloadDisplayIfLoaded(oldid)
+
   if(data.parent) then
     local parentData = db.displays[data.parent];
     if(parentData.controlledChildren) then
@@ -2320,10 +2366,6 @@ function MateAuras.Rename(data, newid)
     triggerSystem.Rename(oldid, newid);
   end
 
-  loaded[newid] = loaded[oldid];
-  loaded[oldid] = nil;
-  loadedBeforePause[newid] = loadedBeforePause[oldid];
-  loadedBeforePause[oldid] = nil;
   loadFuncs[newid] = loadFuncs[oldid];
   loadFuncs[oldid] = nil;
 
@@ -2382,11 +2424,16 @@ function MateAuras.Rename(data, newid)
   MateAuras.Add(data)
 
   Private.callbacks:Fire("Rename", data.uid, oldid, newid)
+
+  if paused then
+    Private.ScanForLoads({[newid] = true})
+  end
 end
 
 function Private.Convert(data, newType)
   Private.TimeMachine:DestroyTheUniverse(data.id)
   local id = data.id;
+  UnloadDisplayIfLoaded(id)
   Private.FakeStatesFor(id, false)
 
   if Private.regions[id] then
@@ -2434,6 +2481,9 @@ function Private.Convert(data, newType)
 
 
   MateAuras.Add(data);
+  if paused then
+    Private.ScanForLoads({[id] = true})
+  end
 
   Private.FakeStatesFor(id, true)
 
@@ -3283,6 +3333,7 @@ function pAdd(data, simpleChange)
     else -- Non group aura
       -- Make sure that we don't have a controlledChildren member.
       data.controlledChildren = nil
+      rebuildingDisplays[id] = true
       local visible
       if (MateAuras.IsOptionsOpen()) then
         visible = Private.FakeStatesFor(id, false)
@@ -3377,8 +3428,14 @@ function pAdd(data, simpleChange)
         Private.FakeStatesFor(id, visible)
       end
 
-      if not(paused) then
+      if not paused and not unloadingAllDisplays then
         Private.ScanForLoads({[id] = true});
+      end
+      rebuildingDisplays[id] = nil
+      -- Imports and options edits can rebuild children before their parents. Resume starts
+      -- their environment lifecycle after the complete display hierarchy is available.
+      if not paused then
+        EnsureAuraEnvironmentLifecycle(id)
       end
     end
 
@@ -4347,9 +4404,15 @@ function MateAuras.GetAuraInstanceTooltipInfo(unit, auraInstanceId, filter)
     if not tooltipData then
       return nil, "", "none", 0
     end
-    local secondLine = not issecretvalue(tooltipData.lines) and tooltipData.lines[2] -- This is the line we want
-    if secondLine and secondLine.leftText then
-      tooltipText = secondLine.leftText
+    if not issecretvalue(tooltipData.lines) then
+      -- when spellID in tooltip CVar is enabled the second line is the spellID
+      local secondLine = tooltipData.lines[2]
+      local thirdLine = tooltipData.lines[3]
+      if secondLine and secondLine.leftText and not secondLine.leftText:find("^Spell ID:") then
+        tooltipText = secondLine.leftText
+      elseif thirdLine and thirdLine.leftText then
+        tooltipText = thirdLine.leftText
+      end
     end
     return tooltipData.dataInstanceID, Private.ParseTooltipText(tooltipText)
   end
@@ -5625,6 +5688,10 @@ function MateAuras.IsAuraActive(id)
   return active and active.show
 end
 
+function MateAuras.IsAuraRuntimeActive(id)
+  return runtimeActiveDisplays[id]
+end
+
 -- Attach to Cursor/Frames code
 -- Very simple function to convert a hsv angle to a color with
 -- value hardcoded to 1 and saturation hardcoded to 0.75
@@ -6288,7 +6355,9 @@ local textSymbols = {
 function MateAuras.ReplaceRaidMarkerSymbols(txt)
   local start = 1
 
-  if issecretvalue(txt) then return txt end
+  if issecretvalue(txt) then
+    return C_ChatInfo.ReplaceIconAndGroupExpressions(txt, false, true)
+  end
   while true do
     local firstChar = txt:find("{", start, true)
     if not firstChar then
